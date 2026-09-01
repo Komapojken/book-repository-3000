@@ -26,7 +26,6 @@ Each book will contain information such as:
 - Genre
 - Published year
 - Number of pages
-- Availability status
 
 The API will support:
 

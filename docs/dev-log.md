@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-01
+Time: 13:15
+
+Task: Reinstallation of packages in correct place. Added minimal code to start implementing tests.
+
+---
+
+Date: 2026-09-01
 Time: 08:18
 
 Task: Initializing git. Creating and adding remote repo.
