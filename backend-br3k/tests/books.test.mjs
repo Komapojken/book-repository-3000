@@ -74,4 +74,31 @@ describe("Books", () => {
         expect(response.status).toBe(200);
         expect(response.body.id).toBe(createdBooks[2].id);
     });
+
+    it("should get update a book by id", async () => {
+
+        const createdBooks = await seedBooks();
+
+        const originalBook = createdBooks[4];
+
+        const updatedBook = {
+            "title": originalBook.title,
+            "author": originalBook.author,
+            "genre": originalBook.genre,
+            "publishedYear": originalBook.publishedYear,
+            "pages": originalBook.pages + 10
+        };
+
+        const response = await request(app)
+            .patch(`/books/${originalBook.id}`)
+            .send(updatedBook);
+
+        expect(response.status).toBe(200);
+        expect(response.body.id).toBe(originalBook.id);
+        expect(response.body.title).toBe(originalBook.title);
+        expect(response.body.author).toBe(originalBook.author);
+        expect(response.body.genre).toBe(originalBook.genre);
+        expect(response.body.publishedYear).toBe(originalBook.publishedYear);
+        expect(response.body.pages).toBe(originalBook.pages + 10);
+    });
 });
