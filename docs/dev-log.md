@@ -7,51 +7,58 @@ Documentation of development.
 ---
 
 Date: 2026-09-01
+Time: 19:52
+
+Task: Removed '/all' from 'GET /books/all'. Edit of dev-log entries.
+
+---
+
+Date: 2026-09-01
 Time: 16:24
 
-Task: Added test to 'update book by id'-endpoint. Test failed.
+Task: Added test for PATCH /books/id. Test failed.
 
 ---
 
 Date: 2026-09-01
 Time: 15:56
 
-Task: Added code to 'get book by id'-endpoint. Refactor of test and seed-data in tests. Test passed.
+Task: Implemented GET /books/id. Test passed. Refactor of test and seed-data in tests.
 
 ---
 
 Date: 2026-09-01
 Time: 15:26
 
-Task: Added test to 'get book by id'-endpoint. Test failed.
+Task: Added test for GET /books/id. Test failed.
 
 ---
 
 Date: 2026-09-01
 Time: 15:13
 
-Task: Added code to 'get all books'-endpoint. Test passed.
+Task: Implemented GET /books. Test passed.
 
 ---
 
 Date: 2026-09-01
 Time: 14:57
 
-Task: Added seed-data. Added test to 'get all books'-endpoint. Test failed. Refactor first test to use seed-data.
+Task: Added test for GET /books. Test failed. Added seed-data. Refactor tests to use seed-data.
 
 ---
 
 Date: 2026-09-01
 Time: 14:05
 
-Task: Added code to endpoint. First test passed.
+Task: Implemented POST /books. Test passed.
 
 ---
 
 Date: 2026-09-01
 Time: 13:35
 
-Task: Added test to first endpoint. Test failed.
+Task: Added test for POST /books. Test failed.
 
 ---
 

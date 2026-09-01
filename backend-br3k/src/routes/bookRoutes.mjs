@@ -7,7 +7,7 @@ const router = express.Router();
 router.post("/", bookController.createBook);
 
 // Get all books
-router.get("/all", bookController.getAllBooks);
+router.get("/", bookController.getAllBooks);
 
 // Get book by id
 router.get("/:id", bookController.getBookById);
