@@ -24,3 +24,11 @@ export function createBook(data) {
 
     return book;
 }
+
+export function getAllBooks() {
+    const books = db.prepare(`
+        SELECT * FROM books
+    `).all();
+
+    return books;
+}

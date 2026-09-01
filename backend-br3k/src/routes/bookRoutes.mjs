@@ -6,10 +6,11 @@ const router = express.Router();
 // Post book
 router.post("/", bookController.createBook);
 
+// Get all books
+router.get("/all", bookController.getAllBooks);
+
 // Update book
 
 // Delete book
-
-// Get all books
 
 export default router;

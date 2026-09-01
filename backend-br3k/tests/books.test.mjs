@@ -46,7 +46,8 @@ describe("Books", () => {
         await seedBooks();
 
         const response = await request(app)
-        .get("/books");
+            .get("/books/all")
+            .send({});
 
         expect(response.status).toBe(200);
         expect(response.body).toHaveLength(books.length);

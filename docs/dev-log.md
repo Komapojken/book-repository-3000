@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-01
+Time: 15:13
+
+Task: Added code to `get all books`-endpoint. Test passed.
+
+---
+
+Date: 2026-09-01
 Time: 14:57
 
 Task: Added seed-data. Added test to `get all books`-endpoint. Test failed. Refactor first test to use seed-data.

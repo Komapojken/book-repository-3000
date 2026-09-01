@@ -5,3 +5,9 @@ export function createBook(req, res) {
 
     res.status(201).json(book);
 }
+
+export function getAllBooks(reg, res) {
+    const books = bookService.getAllBooks();
+
+    res.status(200).json(books);
+}
