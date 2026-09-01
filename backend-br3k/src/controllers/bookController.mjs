@@ -6,8 +6,14 @@ export function createBook(req, res) {
     res.status(201).json(book);
 }
 
-export function getAllBooks(reg, res) {
+export function getAllBooks(req, res) {
     const books = bookService.getAllBooks();
 
     res.status(200).json(books);
+}
+
+export function getBookById(req, res) {
+    const book = bookService.getBookById(req.params.id);
+
+    res.status(200).json(book);
 }

@@ -7,11 +7,17 @@ import { initializeDatabase } from "../src/services/bookService.mjs";
 import books from "../src/seed/books.mjs";
 
 async function seedBooks() {
+    const createdBooks = [];
+
     for (const book of books) {
-        await request(app)
+        const response = await request(app)
             .post("/books")
             .send(book);
+
+        createdBooks.push(response.body);
     }
+
+    return createdBooks;
 }
 
 // Configure a new inmemory database for each test
@@ -60,16 +66,12 @@ describe("Books", () => {
 
     it("should get book by id", async () => {
 
-        await seedBooks();
+        const createdBooks = await seedBooks();
 
         const response = await request(app)
-            .get(`/books/${books[2].id}`);
+            .get(`/books/${createdBooks[2].id}`);
 
         expect(response.status).toBe(200);
-        expect(response.body).toEqual(
-            expect.objectContaining({
-                id: books[2].id
-            })
-        );
+        expect(response.body.id).toBe(createdBooks[2].id);
     });
 });

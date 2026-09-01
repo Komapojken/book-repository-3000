@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-01
+Time: 15:56
+
+Task: Added code to `get book by id`-endpoint. Refactor of test and seed-data in tests. Test passed.
+
+---
+
+Date: 2026-09-01
 Time: 15:26
 
 Task: Added test to `get book by id`-endpoint. Test failed.

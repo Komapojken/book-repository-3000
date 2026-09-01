@@ -32,3 +32,13 @@ export function getAllBooks() {
 
     return books;
 }
+
+export function getBookById(id) {
+    const book = db.prepare(`
+        SELECT *
+        FROM books
+        WHERE id = ?
+    `).get(id);
+
+    return book;
+}
