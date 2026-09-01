@@ -54,3 +54,4 @@ vitest.config.timestamp-*
 
 # Misc
 *.tgz
+todo.md

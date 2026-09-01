@@ -9,35 +9,35 @@ Documentation of development.
 Date: 2026-09-01
 Time: 16:24
 
-Task: Added test to `update book by id`-endpoint. Test failed.
+Task: Added test to 'update book by id'-endpoint. Test failed.
 
 ---
 
 Date: 2026-09-01
 Time: 15:56
 
-Task: Added code to `get book by id`-endpoint. Refactor of test and seed-data in tests. Test passed.
+Task: Added code to 'get book by id'-endpoint. Refactor of test and seed-data in tests. Test passed.
 
 ---
 
 Date: 2026-09-01
 Time: 15:26
 
-Task: Added test to `get book by id`-endpoint. Test failed.
+Task: Added test to 'get book by id'-endpoint. Test failed.
 
 ---
 
 Date: 2026-09-01
 Time: 15:13
 
-Task: Added code to `get all books`-endpoint. Test passed.
+Task: Added code to 'get all books'-endpoint. Test passed.
 
 ---
 
 Date: 2026-09-01
 Time: 14:57
 
-Task: Added seed-data. Added test to `get all books`-endpoint. Test failed. Refactor first test to use seed-data.
+Task: Added seed-data. Added test to 'get all books'-endpoint. Test failed. Refactor first test to use seed-data.
 
 ---
 
