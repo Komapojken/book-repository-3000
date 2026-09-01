@@ -46,8 +46,7 @@ describe("Books", () => {
         await seedBooks();
 
         const response = await request(app)
-            .get("/books/all")
-            .send({});
+            .get("/books/all");
 
         expect(response.status).toBe(200);
         expect(response.body).toHaveLength(books.length);
@@ -55,6 +54,21 @@ describe("Books", () => {
             expect.objectContaining({
                 title: books[0].title,
                 author: books[0].author
+            })
+        );
+    });
+
+    it("should get book by id", async () => {
+
+        await seedBooks();
+
+        const response = await request(app)
+            .get(`/books/${books[2].id}`);
+
+        expect(response.status).toBe(200);
+        expect(response.body).toEqual(
+            expect.objectContaining({
+                id: books[2].id
             })
         );
     });
