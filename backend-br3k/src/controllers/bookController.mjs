@@ -17,3 +17,9 @@ export function getBookById(req, res) {
 
     res.status(200).json(book);
 }
+
+export function updateBookById(req, res) {
+    const book = bookService.updateBookById(req.params.id, req.body);
+
+    res.status(200).json(book);
+}

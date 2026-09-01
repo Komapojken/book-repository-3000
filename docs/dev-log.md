@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-01
+Time: 20:30
+
+Task: Implemented PATCH /books/id. Test passed.
+
+---
+
+Date: 2026-09-01
 Time: 19:52
 
 Task: Removed '/all' from 'GET /books/all'. Edit of dev-log entries.

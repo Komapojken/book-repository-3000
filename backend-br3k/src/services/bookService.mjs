@@ -42,3 +42,26 @@ export function getBookById(id) {
 
     return book;
 }
+
+export function updateBookById(id, data) {
+    db.prepare(`
+        UPDATE books
+        SET title = ?, author = ?, genre = ?, published_year = ?, pages = ?
+        WHERE id = ?
+    `).run(data.title, data.author, data.genre, data.publishedYear, data.pages, id);
+
+    const book = db.prepare(`
+        SELECT *
+        FROM books
+        WHERE id = ?
+    `).get(id);
+
+    return {
+        id: book.id,
+        title: book.title,
+        author: book.author,
+        genre: book.genre,
+        publishedYear: book.published_year,
+        pages: book.pages
+    };
+}

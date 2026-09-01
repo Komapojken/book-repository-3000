@@ -11,7 +11,9 @@ router.get("/", bookController.getAllBooks);
 
 // Get book by id
 router.get("/:id", bookController.getBookById);
+
 // Update book
+router.patch("/:id", bookController.updateBookById);
 
 // Delete book
 
