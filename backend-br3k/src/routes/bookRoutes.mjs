@@ -4,6 +4,7 @@ import * as bookController from "../controllers/bookController.mjs";
 const router = express.Router();
 
 // Post book
+router.post("/", bookController.createBook);
 
 // Update book
 

@@ -21,7 +21,7 @@ describe("Books", () => {
             "title": "The angry dragon.",
             "author": "Robban the greatest",
             "genre": "Sci-fi, Horror, Comedy",
-            "published_year": 2026,
+            "publishedYear": 2026,
             "pages": 1976
         };
 

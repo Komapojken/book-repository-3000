@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-01
+Time: 14:05
+
+Task: Added code to endpoint. First test passed.
+
+---
+
+Date: 2026-09-01
 Time: 13:35
 
 Task: Added test to first endpoint. Test failed.
