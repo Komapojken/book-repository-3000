@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-01
+Time: 13:35
+
+Task: Added test to first endpoint. Test failed.
+
+---
+
+Date: 2026-09-01
 Time: 13:15
 
 Task: Reinstallation of packages in correct place. Added minimal code to start implementing tests.

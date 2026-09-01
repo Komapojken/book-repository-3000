@@ -1,9 +1,9 @@
 import express from "express";
-import ticketRoutes from "./ticketRoutes.mjs";
+import bookRoutes from "./bookRoutes.mjs";
 
 const router = express.Router();
 
 // Tickets
-router.use("/books", ticketRoutes);
+router.use("/books", bookRoutes);
 
 export default router;
