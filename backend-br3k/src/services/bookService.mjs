@@ -1,4 +1,5 @@
 import crypto from "node:crypto";
+import { mapBook } from "../mappers/bookMapper.mjs";
 
 let db;
 
@@ -30,7 +31,7 @@ export function getAllBooks() {
         SELECT * FROM books
     `).all();
 
-    return books;
+    return books.map(mapBook);
 }
 
 export function getBookById(id) {
@@ -40,7 +41,7 @@ export function getBookById(id) {
         WHERE id = ?
     `).get(id);
 
-    return book;
+    return mapBook(book);
 }
 
 export function updateBookById(id, data) {
@@ -56,12 +57,5 @@ export function updateBookById(id, data) {
         WHERE id = ?
     `).get(id);
 
-    return {
-        id: book.id,
-        title: book.title,
-        author: book.author,
-        genre: book.genre,
-        publishedYear: book.published_year,
-        pages: book.pages
-    };
+    return mapBook(book);
 }

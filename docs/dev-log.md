@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-01
+Time: 20:43
+
+Task: Added mapper for SQL book to API book. Implemented in bookService.
+
+---
+
+Date: 2026-09-01
 Time: 20:30
 
 Task: Implemented PATCH /books/id. Test passed.
