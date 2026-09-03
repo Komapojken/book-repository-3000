@@ -101,4 +101,19 @@ describe("Books", () => {
         expect(response.body.publishedYear).toBe(originalBook.publishedYear);
         expect(response.body.pages).toBe(originalBook.pages + 10);
     });
+
+    it("should delete a book by id", async () => {
+
+        const createdBooks = await seedBooks();
+
+        const response = await request(app)
+            .delete(`/books/${createdBooks[4].id}`);
+
+        expect(response.status).toBe(204);
+
+        const getResponse = await request(app)
+            .get(`/books/${createdBooks[4].id}`);
+
+        expect(getResponse.status).toBe(404);
+    });
 });

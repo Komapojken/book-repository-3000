@@ -6,6 +6,20 @@ Documentation of development.
 
 ---
 
+Date: 2026-09-03
+Time: 14:59
+
+Task: Added test for DELETE /books/:id.
+
+---
+
+Date: 2026-09-03
+Time: 10:38
+
+Task: Added pdf-file of the assignment to docs-folder.
+
+---
+
 Date: 2026-09-01
 Time: 20:43
 
@@ -16,7 +30,7 @@ Task: Added mapper for SQL book to API book. Implemented in bookService.
 Date: 2026-09-01
 Time: 20:30
 
-Task: Implemented PATCH /books/id. Test passed.
+Task: Implemented PATCH /books/:id. Test passed.
 
 ---
 
@@ -30,21 +44,21 @@ Task: Removed '/all' from 'GET /books/all'. Edit of dev-log entries.
 Date: 2026-09-01
 Time: 16:24
 
-Task: Added test for PATCH /books/id. Test failed.
+Task: Added test for PATCH /books/:id. Test failed.
 
 ---
 
 Date: 2026-09-01
 Time: 15:56
 
-Task: Implemented GET /books/id. Test passed. Refactor of test and seed-data in tests.
+Task: Implemented GET /books/:id. Test passed. Refactor of test and seed-data in tests.
 
 ---
 
 Date: 2026-09-01
 Time: 15:26
 
-Task: Added test for GET /books/id. Test failed.
+Task: Added test for GET /books/:id. Test failed.
 
 ---
 
