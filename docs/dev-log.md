@@ -7,6 +7,15 @@ Documentation of development.
 ---
 
 Date: 2026-09-03
+Time: 19:48
+
+Task: Added test for GET /books?genre=<Keyword>. Test failed.
+
+Next: Implement filter by genre.
+
+---
+
+Date: 2026-09-03
 Time: 19:34
 
 Task: Added init-db script to create and seed SQLite database.

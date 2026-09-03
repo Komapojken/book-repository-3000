@@ -64,6 +64,21 @@ describe("Books", () => {
         );
     });
 
+    it("should filter books by genre", async () => {
+
+        await seedBooks();
+
+        const response = await request(app)
+            .get("/books?genre=Fantasy");
+
+        expect(response.status).toBe(200);
+        expect(response.body.length).toBeGreaterThan(0);
+
+        for (const book of response.body) {
+            expect(book.genre).toContain("Fantasy");
+        }
+    });
+
     it("should get book by id", async () => {
 
         const createdBooks = await seedBooks();
