@@ -7,6 +7,17 @@ Documentation of development.
 ---
 
 Date: 2026-09-03
+Time: 20:24
+
+Task: Implemented GET /books?author=<Keyword>. Test passed.
+
+Notes: This is a school project. Implementing only two filters.
+
+Next: Add test for GET /books?genre=<Keyword>&author=<Keyword>.
+
+---
+
+Date: 2026-09-03
 Time: 20:19
 
 Task: Added test for GET /books?author=<Keyword>. Test failed.

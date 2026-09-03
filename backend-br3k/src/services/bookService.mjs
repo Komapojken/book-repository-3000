@@ -37,7 +37,17 @@ export function getAllBooks(query) {
 
         return books.map(mapBook);
     }
-    
+
+    if (query.author) {
+        const books = db.prepare(`
+            SELECT *
+            FROM books
+            WHERE author LIKE ?
+        `).all(`%${query.author}%`);
+
+        return books.map(mapBook);
+    }
+
     const books = db.prepare(`
         SELECT * FROM books
     `).all();
