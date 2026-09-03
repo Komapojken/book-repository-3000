@@ -7,6 +7,15 @@ Documentation of development.
 ---
 
 Date: 2026-09-03
+Time: 20:19
+
+Task: Added test for GET /books?author=<Keyword>. Test failed.
+
+Next: Implement GET /books?author=<Keyword>.
+
+---
+
+Date: 2026-09-03
 Time: 19:58
 
 Task: Implemented GET /books?genre=<Keyword>. Test passed.

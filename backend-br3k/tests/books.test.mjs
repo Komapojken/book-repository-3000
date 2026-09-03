@@ -79,6 +79,21 @@ describe("Books", () => {
         }
     });
 
+    it("should filter books by author", async () => {
+
+        await seedBooks();
+
+        const response = await request(app)
+            .get("/books?author=Stephen King");
+
+        expect(response.status).toBe(200);
+        expect(response.body.length).toBeGreaterThan(0);
+
+        for (const book of response.body) {
+            expect(book.author).toContain("Stephen King");
+        }
+    });
+
     it("should get book by id", async () => {
 
         const createdBooks = await seedBooks();
