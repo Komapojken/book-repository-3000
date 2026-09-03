@@ -28,6 +28,17 @@ export function createBook(data) {
 
 export function getAllBooks(query) {
 
+    if (query.genre && query.author) {
+        const books = db.prepare(`
+            SELECT *
+            FROM books
+            WHERE genre LIKE ?
+            AND author LIKE ?
+        `).all(`%${query.genre}%`, `%${query.author}%`);
+
+        return books.map(mapBook);
+    }
+
     if (query.genre) {
         const books = db.prepare(`
             SELECT *
