@@ -7,6 +7,17 @@ Documentation of development.
 ---
 
 Date: 2026-09-03
+Time: 19:34
+
+Task: Added init-db script to create and seed SQLite database.
+
+Notes: Seeding database for demo is now simple as 'npm run init-db".
+
+Next: Implement filtering by genre/author.
+
+---
+
+Date: 2026-09-03
 Time: 16:17
 
 Task: Implement DELETE /books/:id. Refactor of GET /books/:id to handle 'Not found'. Test passed.

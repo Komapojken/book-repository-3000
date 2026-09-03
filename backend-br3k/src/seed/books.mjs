@@ -14,7 +14,7 @@ export default [
         pages: 1976
     },
     {
-        title: "Defeating ingorance 101",
+        title: "Defeating ignorance 101",
         author: "CourseBot",
         genre: "Education, Comedy",
         publishedYear: 3402,
