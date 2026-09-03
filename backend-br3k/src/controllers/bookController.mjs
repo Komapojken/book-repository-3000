@@ -7,7 +7,7 @@ export function createBook(req, res) {
 }
 
 export function getAllBooks(req, res) {
-    const books = bookService.getAllBooks();
+    const books = bookService.getAllBooks(req.query);
 
     res.status(200).json(books);
 }

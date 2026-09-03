@@ -26,7 +26,18 @@ export function createBook(data) {
     return book;
 }
 
-export function getAllBooks() {
+export function getAllBooks(query) {
+
+    if (query.genre) {
+        const books = db.prepare(`
+            SELECT *
+            FROM books
+            WHERE genre LIKE ?
+        `).all(`%${query.genre}%`);
+
+        return books.map(mapBook);
+    }
+    
     const books = db.prepare(`
         SELECT * FROM books
     `).all();
