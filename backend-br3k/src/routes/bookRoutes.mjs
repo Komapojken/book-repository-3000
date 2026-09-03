@@ -16,5 +16,6 @@ router.get("/:id", bookController.getBookById);
 router.patch("/:id", bookController.updateBookById);
 
 // Delete book
+router.delete("/:id", bookController.deleteBookById);
 
 export default router;

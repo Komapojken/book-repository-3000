@@ -106,13 +106,15 @@ describe("Books", () => {
 
         const createdBooks = await seedBooks();
 
+        const id = createdBooks[4].id;
+
         const response = await request(app)
-            .delete(`/books/${createdBooks[4].id}`);
+            .delete(`/books/${id}`);
 
         expect(response.status).toBe(204);
 
         const getResponse = await request(app)
-            .get(`/books/${createdBooks[4].id}`);
+            .get(`/books/${id}`);
 
         expect(getResponse.status).toBe(404);
     });

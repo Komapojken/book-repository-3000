@@ -15,6 +15,10 @@ export function getAllBooks(req, res) {
 export function getBookById(req, res) {
     const book = bookService.getBookById(req.params.id);
 
+    if(!book.success && book.reason === "notFound") {
+        return res.status(404).json({ message: "Not found" });
+    }
+
     res.status(200).json(book);
 }
 
@@ -22,4 +26,10 @@ export function updateBookById(req, res) {
     const book = bookService.updateBookById(req.params.id, req.body);
 
     res.status(200).json(book);
+}
+
+export function deleteBookById(req, res) {
+    bookService.deleteBookById(req.params.id);
+
+    res.status(204).send();
 }

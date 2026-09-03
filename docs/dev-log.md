@@ -7,6 +7,17 @@ Documentation of development.
 ---
 
 Date: 2026-09-03
+Time: 16:17
+
+Task: Implement DELETE /books/:id. Refactor of GET /books/:id to handle 'Not found'. Test passed.
+
+Notes: Minimal changes to GET /books/:id to pass the test. More will come as the project progesses.
+
+Next: Implement script to initialize database.
+
+---
+
+Date: 2026-09-03
 Time: 14:59
 
 Task: Added test for DELETE /books/:id.

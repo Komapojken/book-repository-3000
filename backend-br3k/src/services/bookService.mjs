@@ -41,6 +41,10 @@ export function getBookById(id) {
         WHERE id = ?
     `).get(id);
 
+    if(book === undefined) {
+        return { success: false, reason: "notFound" };
+    }
+
     return mapBook(book);
 }
 
@@ -58,4 +62,11 @@ export function updateBookById(id, data) {
     `).get(id);
 
     return mapBook(book);
+}
+
+export function deleteBookById(id) {
+    db.prepare(`
+        DELETE FROM books
+        WHERE id = ?
+    `).run(id);
 }
