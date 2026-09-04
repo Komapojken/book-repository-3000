@@ -7,6 +7,15 @@ Documentation of development.
 ---
 
 Date: 2026-09-04
+Time: 10:17
+
+Task: Implemented validation and duplication protection for POST /books. Test passed.
+
+Next: Add test for validation for PATCH /books/:id.
+
+---
+
+Date: 2026-09-04
 Time: 09:15
 
 Task: Added test for validation and duplication protection for POST /books. Test failed.

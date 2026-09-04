@@ -17,6 +17,17 @@ export function createBook(data) {
         "pages": data.pages
     };
 
+    const existingBook = db.prepare(`
+        SELECT *
+        FROM books
+        WHERE title = ?
+        AND author = ?
+    `).get(data.title, data.author);
+    
+    if (existingBook) {
+        return { success: false, reason: "bookExists" };
+    }
+
     db.prepare(`
         INSERT INTO books
         (id, title, author, genre, published_year, pages)

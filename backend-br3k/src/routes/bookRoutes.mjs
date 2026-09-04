@@ -1,10 +1,11 @@
 import express from "express";
 import * as bookController from "../controllers/bookController.mjs";
+import { validateCreateBook } from "../middleware/validationMiddleware.mjs";
 
 const router = express.Router();
 
 // Post book
-router.post("/", bookController.createBook);
+router.post("/", validateCreateBook, bookController.createBook);
 
 // Get all books
 router.get("/", bookController.getAllBooks);

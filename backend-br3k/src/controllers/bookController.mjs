@@ -3,6 +3,12 @@ import * as bookService from "../services/bookService.mjs";
 export function createBook(req, res) {
     const book = bookService.createBook(req.body);
 
+    if (book.success === false) {
+        if (book.reason === "bookExists") {
+            return res.status(409).json("Book already exists in database");
+        }
+    }
+
     res.status(201).json(book);
 }
 
