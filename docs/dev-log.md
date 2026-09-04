@@ -7,6 +7,15 @@ Documentation of development.
 ---
 
 Date: 2026-09-04
+Time: 11:16
+
+Task: Implemented validation and id check for PATCH /books/:id. Test passed.
+
+Next: Refactor of DELETE /books/:id with id check.
+
+---
+
+Date: 2026-09-04
 Time: 11:07
 
 Task: Added test for validation and id check for PATCH /books/:id. Test failed.

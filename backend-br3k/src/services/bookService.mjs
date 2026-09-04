@@ -23,7 +23,7 @@ export function createBook(data) {
         WHERE title = ?
         AND author = ?
     `).get(data.title, data.author);
-    
+
     if (existingBook) {
         return { success: false, reason: "bookExists" };
     }
@@ -92,6 +92,16 @@ export function getBookById(id) {
 }
 
 export function updateBookById(id, data) {
+    const existingBook = db.prepare(`
+        SELECT *
+        FROM books
+        WHERE id = ?
+    `).get(id);
+    
+    if (!existingBook) {
+        return { success: false, reason: "notFound" };
+    }
+
     db.prepare(`
         UPDATE books
         SET title = ?, author = ?, genre = ?, published_year = ?, pages = ?
