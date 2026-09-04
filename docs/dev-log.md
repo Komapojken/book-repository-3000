@@ -6,6 +6,17 @@ Documentation of development.
 
 ---
 
+Date: 2026-09-04
+Time: 09:15
+
+Task: Added test for validation and duplication protection for POST /books. Test failed.
+
+Notes: Add protection against creating multiple copies of the same book in the database.
+
+Next: Implement validation for POST /books.
+
+---
+
 Date: 2026-09-03
 Time: 21:08
 

@@ -1,7 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import request from "supertest";
 import app from "../src/app.mjs";
-import crypto from "node:crypto";
 import { createDatabase } from "../src/database/databaseConfig.mjs";
 import { initializeDatabase } from "../src/services/bookService.mjs";
 import books from "../src/seed/books.mjs";
@@ -30,6 +29,8 @@ beforeEach(() => {
 
 describe("Books", () => {
 
+    // POST /books
+
     it("should create a book", async () => {
 
         const newBook = books[7];
@@ -46,6 +47,8 @@ describe("Books", () => {
         expect(response.body.publishedYear).toBe(newBook.publishedYear);
         expect(response.body.pages).toBe(newBook.pages);
     });
+
+    // GET /books
 
     it("should get all the books", async () => {
 
@@ -110,6 +113,20 @@ describe("Books", () => {
         }
     });
 
+    it("should return 409 if the book already exists", async () => {
+
+        await seedBooks();
+        const book = books[0];
+
+        const response = await request(app)
+            .post("/books")
+            .send(book);
+
+        expect(response.status).toBe(409);
+    });
+
+    // GET /books/:id
+
     it("should get book by id", async () => {
 
         const createdBooks = await seedBooks();
@@ -120,6 +137,8 @@ describe("Books", () => {
         expect(response.status).toBe(200);
         expect(response.body.id).toBe(createdBooks[2].id);
     });
+
+    // PATCH /books/:id
 
     it("should get update a book by id", async () => {
 
@@ -147,6 +166,8 @@ describe("Books", () => {
         expect(response.body.publishedYear).toBe(originalBook.publishedYear);
         expect(response.body.pages).toBe(originalBook.pages + 10);
     });
+
+    // DELETE /books/:id
 
     it("should delete a book by id", async () => {
 
