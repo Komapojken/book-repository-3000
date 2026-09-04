@@ -7,6 +7,17 @@ Documentation of development.
 ---
 
 Date: 2026-09-04
+Time: 12:55
+
+Task: Refactor of DELETE /books/:id. Now check if book exist before deleting. Added test. Test passed.
+
+Notes: Forgot to add test and then implement.
+
+Next: Pagination.
+
+---
+
+Date: 2026-09-04
 Time: 11:16
 
 Task: Implemented validation and id check for PATCH /books/:id. Test passed.

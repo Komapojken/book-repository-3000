@@ -37,7 +37,11 @@ export function updateBookById(req, res) {
 }
 
 export function deleteBookById(req, res) {
-    bookService.deleteBookById(req.params.id);
+    const result = bookService.deleteBookById(req.params.id);
+
+    if(!result.success && result.reason === "notFound") {
+        return res.status(404).json({ message: "Book not found" });
+    }
 
     res.status(204).send();
 }

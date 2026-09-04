@@ -118,8 +118,20 @@ export function updateBookById(id, data) {
 }
 
 export function deleteBookById(id) {
+    const existingBook = db.prepare(`
+        SELECT *
+        FROM books
+        WHERE id = ?
+    `).get(id);
+    
+    if (!existingBook) {
+        return { success: false, reason: "notFound" };
+    }
+
     db.prepare(`
         DELETE FROM books
         WHERE id = ?
     `).run(id);
+
+    return { success: true, message: "Book deleted" };
 }

@@ -205,4 +205,16 @@ describe("Books", () => {
 
         expect(getResponse.status).toBe(404);
     });
+
+    it("should return 404 if a book is not found by id when deleting", async () => {
+
+        await seedBooks();
+
+        const id = "123";
+
+        const response = await request(app)
+            .delete(`/books/${id}`);
+
+        expect(response.status).toBe(404);
+    });
 });
