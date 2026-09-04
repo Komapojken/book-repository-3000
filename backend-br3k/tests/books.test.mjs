@@ -167,6 +167,26 @@ describe("Books", () => {
         expect(response.body.pages).toBe(originalBook.pages + 10);
     });
 
+    it("should get return 404 if id not found", async () => {
+
+        await seedBooks();
+
+        const testBook = {
+            id: "123",
+            title: books[2].title,
+            author: books[2].author,
+            genre: books[2].genre,
+            publishedYear: books[2].publishedYear,
+            pages: books[2].pages + 10
+        };
+
+        const response = await request(app)
+            .patch(`/books/${testBook.id}`)
+            .send(testBook);
+
+        expect(response.status).toBe(404);
+    });
+
     // DELETE /books/:id
 
     it("should delete a book by id", async () => {
