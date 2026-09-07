@@ -58,8 +58,8 @@ describe("Books", () => {
             .get("/books");
 
         expect(response.status).toBe(200);
-        expect(response.body).toHaveLength(books.length);
-        expect(response.body[0]).toEqual(
+        expect(response.body.items).toHaveLength(books.length);
+        expect(response.body.items[0]).toEqual(
             expect.objectContaining({
                 title: books[0].title,
                 author: books[0].author
@@ -75,9 +75,9 @@ describe("Books", () => {
             .get("/books?genre=Fantasy");
 
         expect(response.status).toBe(200);
-        expect(response.body.length).toBeGreaterThan(0);
+        expect(response.body.items.length).toBeGreaterThan(0);
 
-        for (const book of response.body) {
+        for (const book of response.body.items) {
             expect(book.genre).toContain("Fantasy");
         }
     });
@@ -90,9 +90,9 @@ describe("Books", () => {
             .get("/books?author=Stephen King");
 
         expect(response.status).toBe(200);
-        expect(response.body.length).toBeGreaterThan(0);
+        expect(response.body.items.length).toBeGreaterThan(0);
 
-        for (const book of response.body) {
+        for (const book of response.body.items) {
             expect(book.author).toContain("Stephen King");
         }
     });
@@ -105,9 +105,9 @@ describe("Books", () => {
             .get("/books?genre=Horror&author=Stephen King");
 
         expect(response.status).toBe(200);
-        expect(response.body.length).toBeGreaterThan(0);
+        expect(response.body.items.length).toBeGreaterThan(0);
 
-        for (const book of response.body) {
+        for (const book of response.body.items) {
             expect(book.genre).toContain("Horror");
             expect(book.author).toContain("Stephen King");
         }

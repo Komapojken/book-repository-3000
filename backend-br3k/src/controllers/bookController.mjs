@@ -11,7 +11,14 @@ export function createBook(req, res) {
 }
 
 export function getAllBooks(req, res) {
-    const books = bookService.getAllBooks(req.query);
+    const query = {
+        genre: req.query.genre,
+        author: req.query.author,
+        page: Number(req.query.page),
+        pageSize: Number(req.query.pageSize)
+    };
+
+    const books = bookService.getAllBooks(query);
 
     res.status(200).json(books);
 }

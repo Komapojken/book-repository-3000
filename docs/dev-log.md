@@ -7,6 +7,15 @@ Documentation of development.
 ---
 
 Date: 2026-09-07
+Time: 15:06
+
+Task: Implemented pagination for GET /books. Refactor of books.test.mjs since pagination broke som tests. Test passed.
+
+Next: README
+
+---
+
+Date: 2026-09-07
 Time: 13:58
 
 Task: Added test for pagination for GET /books. Test failed.

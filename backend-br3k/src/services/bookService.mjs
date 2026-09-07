@@ -38,6 +38,9 @@ export function createBook(data) {
 }
 
 export function getAllBooks(query) {
+    const page = query.page || 1;
+    const pageSize = query.pageSize || 1000;
+    const offset = (page - 1) * pageSize;
 
     if (query.genre && query.author) {
         const books = db.prepare(`
@@ -45,9 +48,11 @@ export function getAllBooks(query) {
             FROM books
             WHERE genre LIKE ?
             AND author LIKE ?
-        `).all(`%${query.genre}%`, `%${query.author}%`);
+            LIMIT ?
+            OFFSET ?
+        `).all(`%${query.genre}%`, `%${query.author}%`, pageSize, offset);
 
-        return books.map(mapBook);
+        return { items: books.map(mapBook), page: query.page, pageSize: query.pageSize };
     }
 
     if (query.genre) {
@@ -55,9 +60,11 @@ export function getAllBooks(query) {
             SELECT *
             FROM books
             WHERE genre LIKE ?
-        `).all(`%${query.genre}%`);
+            LIMIT ?
+            OFFSET ?
+        `).all(`%${query.genre}%`, pageSize, offset);
 
-        return books.map(mapBook);
+        return { items: books.map(mapBook), page: query.page, pageSize: query.pageSize };
     }
 
     if (query.author) {
@@ -65,16 +72,29 @@ export function getAllBooks(query) {
             SELECT *
             FROM books
             WHERE author LIKE ?
-        `).all(`%${query.author}%`);
+            LIMIT ?
+            OFFSET ?
+        `).all(`%${query.author}%`, pageSize, offset);
 
-        return books.map(mapBook);
+        return { items: books.map(mapBook), page: query.page, pageSize: query.pageSize };
+    }
+
+    if (query.pageSize && query.page) {
+        const books = db.prepare(`
+            SELECT *
+            FROM books
+            LIMIT ?
+            OFFSET ?
+        `).all(pageSize, offset);
+
+        return { items: books.map(mapBook), page: query.page, pageSize: query.pageSize };
     }
 
     const books = db.prepare(`
         SELECT * FROM books
     `).all();
 
-    return books.map(mapBook);
+    return { items: books.map(mapBook), page: query.page, pageSize: query.pageSize };
 }
 
 export function getBookById(id) {
