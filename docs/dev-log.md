@@ -7,6 +7,17 @@ Documentation of development.
 ---
 
 Date: 2026-09-07
+Time: 16:00
+
+Task: Updated README.md. Added .env.example with evironment variables.
+
+Notes: Some sections of README still empty. More work to be done.
+
+Next: Input sanitization.
+
+---
+
+Date: 2026-09-07
 Time: 15:06
 
 Task: Implemented pagination for GET /books. Refactor of books.test.mjs since pagination broke som tests. Test passed.
