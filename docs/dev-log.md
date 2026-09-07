@@ -6,6 +6,15 @@ Documentation of development.
 
 ---
 
+Date: 2026-09-07
+Time: 13:58
+
+Task: Added test for pagination for GET /books. Test failed.
+
+Next: Implement pagination for GET /books.
+
+---
+
 Date: 2026-09-04
 Time: 12:55
 
