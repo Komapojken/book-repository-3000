@@ -95,6 +95,7 @@ describe("Sanitization", () => {
                 publishedYear: 1937,
                 pages: 310
             });
+            
         expect(response.status).toBe(201);
         expect(response.body.title).toBe("The Hobbit");
     });
@@ -109,6 +110,7 @@ describe("Sanitization", () => {
                 publishedYear: 1937,
                 pages: 310
             });
+
         expect(response.status).toBe(201);
         expect(response.body.author).toBe("J.R.R. Tolkien");
     });
@@ -123,6 +125,7 @@ describe("Sanitization", () => {
                 publishedYear: 1937,
                 pages: 310
             });
+
         expect(response.status).toBe(201);
         expect(response.body.genre).toBe("Fantasy");
     });

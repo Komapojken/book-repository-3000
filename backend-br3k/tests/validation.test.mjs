@@ -4,20 +4,7 @@ import app from "../src/app.mjs";
 import { createDatabase } from "../src/database/databaseConfig.mjs";
 import { initializeDatabase } from "../src/services/bookService.mjs";
 import books from "../src/seed/books.mjs";
-
-async function seedBooks() {
-    const createdBooks = [];
-
-    for (const book of books) {
-        const response = await request(app)
-            .post("/books")
-            .send(book);
-
-        createdBooks.push(response.body);
-    }
-
-    return createdBooks;
-}
+import { seedBooks } from "./helpers.mjs";
 
 // Configure a new inmemory database for each test
 
@@ -33,65 +20,75 @@ describe("Validation", () => {
 
     it("should return 400 if the title is missing", async () => {
 
-        const testBook = books[3];
-
-        testBook.title = "";
-
         const response = await request(app)
             .post("/books")
-            .send(testBook);
+            .send({
+                title: "",
+                author: books[3].author,
+                genre: books[3].genre,
+                publishedYear: books[3].publishedYear,
+                pages: books[3].pages
+            });
 
         expect(response.status).toBe(400);
     });
 
     it("should return 400 if the author is missing", async () => {
 
-        const testBook = books[3];
-
-        testBook.author = "";
-
         const response = await request(app)
             .post("/books")
-            .send(testBook);
+            .send({
+                title: books[3].title,
+                author: "",
+                genre: books[3].genre,
+                publishedYear: books[3].publishedYear,
+                pages: books[3].pages
+            });
 
         expect(response.status).toBe(400);
     });
 
     it("should return 400 if the genre is missing", async () => {
 
-        const testBook = books[3];
-
-        testBook.genre = "";
-
         const response = await request(app)
             .post("/books")
-            .send(testBook);
+            .send({
+                title: books[3].title,
+                author: books[3].author,
+                genre: "",
+                publishedYear: books[3].publishedYear,
+                pages: books[3].pages
+            });
 
         expect(response.status).toBe(400);
     });
 
     it("should return 400 if the published year is missing", async () => {
 
-        const testBook = books[3];
-
-        testBook.publishedYear = null;
-
         const response = await request(app)
             .post("/books")
-            .send(testBook);
+            .send({
+                title: books[3].title,
+                author: books[3].author,
+                genre: books[3].genre,
+                publishedYear: null,
+                pages: books[3].pages
+            });
 
         expect(response.status).toBe(400);
     });
 
     it("should return 400 if number of pages is missing", async () => {
 
-        const testBook = books[3];
-
-        testBook.pages = null;
-
         const response = await request(app)
             .post("/books")
-            .send(testBook);
+            .send({
+                title: books[3].title,
+                author: books[3].author,
+                genre: books[3].genre,
+                publishedYear: books[3].publishedYear,
+                pages: null
+            });
 
         expect(response.status).toBe(400);
     });
@@ -100,110 +97,85 @@ describe("Validation", () => {
 
     it("should return 400 if the title is missing", async () => {
 
-        await seedBooks();
-
-        const testBook = {
-            id: books[3].id,
-            title: "",
-            author: books[3].author,
-            genre: books[3].genre,
-            publishedYear: books[3].publishedYear,
-            pages: books[3].pages
-        };
-
-        const id = testBook.id;
+        const createdBooks = await seedBooks();
 
         const response = await request(app)
-            .patch(`/books/${id}`)
-            .send(testBook);
+            .patch(`/books/${createdBooks[3].id}`)
+            .send({
+                title: "",
+                author: createdBooks[3].author,
+                genre: createdBooks[3].genre,
+                publishedYear: createdBooks[3].publishedYear,
+                pages: createdBooks[3].pages
+            });
 
         expect(response.status).toBe(400);
     });
 
     it("should return 400 if the author is missing", async () => {
 
-        await seedBooks();
-
-        const testBook = {
-            id: books[3].id,
-            title: books[3].title,
-            author: "",
-            genre: books[3].genre,
-            publishedYear: books[3].publishedYear,
-            pages: books[3].pages
-        };
-
-        const id = testBook.id;
+        const createdBooks = await seedBooks();
 
         const response = await request(app)
-            .patch(`/books/${id}`)
-            .send(testBook);
+            .patch(`/books/${createdBooks[3].id}`)
+            .send({
+                title: createdBooks[3].title,
+                author: "",
+                genre: createdBooks[3].genre,
+                publishedYear: createdBooks[3].publishedYear,
+                pages: createdBooks[3].pages
+            });
 
         expect(response.status).toBe(400);
     });
 
     it("should return 400 if the genre is missing", async () => {
 
-        await seedBooks();
-
-        const testBook = {
-            id: books[3].id,
-            title: books[3].title,
-            author: books[3].author,
-            genre: "",
-            publishedYear: books[3].publishedYear,
-            pages: books[3].pages
-        };
-
-        const id = testBook.id;
+        const createdBooks = await seedBooks();
 
         const response = await request(app)
-            .patch(`/books/${id}`)
-            .send(testBook);
+            .patch(`/books/${createdBooks[3].id}`)
+            .send({
+                title: createdBooks[3].title,
+                author: createdBooks[3].author,
+                genre: "",
+                publishedYear: createdBooks[3].publishedYear,
+                pages: createdBooks[3].pages
+            });
 
         expect(response.status).toBe(400);
     });
 
     it("should return 400 if the published year is missing", async () => {
 
-        await seedBooks();
-
-        const testBook = {
-            id: books[3].id,
-            title: books[3].title,
-            author: books[3].author,
-            genre: books[3].genre,
-            publishedYear: null,
-            pages: books[3].pages
-        };
-
-        const id = testBook.id;
+        const createdBooks = await seedBooks();
 
         const response = await request(app)
-            .patch(`/books/${id}`)
-            .send(testBook);
+            .patch(`/books/${createdBooks[3].id}`)
+            .send({
+                title: createdBooks[3].title,
+                author: createdBooks[3].author,
+                genre: createdBooks[3].genre,
+                publishedYear: null,
+                pages: createdBooks[3].pages
+            });
 
         expect(response.status).toBe(400);
     });
 
     it("should return 400 if number of pages is missing", async () => {
 
-        await seedBooks();
-
-        const testBook = {
-            id: books[3].id,
-            title: books[3].title,
-            author: books[3].author,
-            genre: books[3].genre,
-            publishedYear: books[3].publishedYear,
-            pages: null
-        };
-
-        const id = testBook.id;
+        const createdBooks = await seedBooks();
 
         const response = await request(app)
-            .patch(`/books/${id}`)
-            .send(testBook);
+            .patch(`/books/${createdBooks[3].id}`)
+            .send({
+                title: createdBooks[3].title,
+                author: createdBooks[3].author,
+                genre: createdBooks[3].genre,
+                publishedYear: createdBooks[3].publishedYear,
+                pages: null
+            });
 
         expect(response.status).toBe(400);
     });

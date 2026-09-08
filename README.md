@@ -120,15 +120,15 @@ book-repository-3000/
 │   ├── tests/
 │   │   ├── books.test.mjs
 │   │   ├── errorHandling.test.mjs
+│   │   ├── helpers.mjs
 │   │   ├── pagination.test.mjs
-│   │   ├── validation.test.mjs
 │   │   ├── sanitization.test.mjs
-│   │   └── setup.mjs
+│   │   ├── setup.mjs
+│   │   └── validation.test.mjs
 │   │
 │   ├── database/
 │   │   └── books.db
 │   │
-│   ├── .env
 │   ├── .env.example
 │   ├── .npmrc
 │   ├── package.json

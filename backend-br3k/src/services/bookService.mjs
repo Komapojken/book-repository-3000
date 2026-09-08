@@ -96,7 +96,7 @@ export function getBookById(id) {
         WHERE id = ?
     `).get(id);
 
-    if(book === undefined) {
+    if (book === undefined) {
         return { success: false, reason: "notFound" };
     }
 

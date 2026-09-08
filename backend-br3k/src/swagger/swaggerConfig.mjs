@@ -70,7 +70,6 @@ const options = {
                         },
                         pageSize: {
                             type: "integer",
-                            nullable: true,
                             example: 5
                         }
                     }
@@ -90,8 +89,7 @@ const options = {
     },
     
     apis: [
-        "./src/routes/*.mjs",
-        "./src/controllers/*.mjs"
+        "./src/routes/*.mjs"
     ]
 };
 

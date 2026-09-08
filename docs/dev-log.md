@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-08
+Time: 20:41
+
+Task: Code refactoring and cleanup. Updated README. Test passed.
+
+---
+
+Date: 2026-09-08
 Time: 18:53
 
 Task: Updated Swagger with 500 responses on all endpoints. Updated README.md.

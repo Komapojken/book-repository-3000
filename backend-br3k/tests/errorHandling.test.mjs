@@ -19,13 +19,17 @@ describe("Error handling", () => {
 
     // POST /books
 
-    it("should return 500 when posting a book and the database is unavailable", async () => {        
-
-        const newBook = books[7];
+    it("should return 500 when posting a book and the database is unavailable", async () => {
 
         const response = await request(app)
             .post("/books")
-            .send(newBook);
+            .send({
+                title: books[7].title,
+                author: books[7].author,
+                genre: books[7].genre,
+                publishedYear: books[7].publishedYear,
+                pages: books[7].pages
+            });
 
         expect(response.status).toBe(500);
         expect(response.body).toEqual({ message: "Internal server error" });
@@ -33,7 +37,7 @@ describe("Error handling", () => {
 
     // GET /books
 
-    it("should return 500 when getting books by genre and the database is unavailable", async () => {
+    it("should return 500 when getting books and the database is unavailable", async () => {
 
         const response = await request(app)
             .get("/books?page=1");

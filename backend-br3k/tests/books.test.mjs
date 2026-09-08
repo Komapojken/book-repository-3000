@@ -4,20 +4,7 @@ import app from "../src/app.mjs";
 import { createDatabase } from "../src/database/databaseConfig.mjs";
 import { initializeDatabase } from "../src/services/bookService.mjs";
 import books from "../src/seed/books.mjs";
-
-async function seedBooks() {
-    const createdBooks = [];
-
-    for (const book of books) {
-        const response = await request(app)
-            .post("/books")
-            .send(book);
-
-        createdBooks.push(response.body);
-    }
-
-    return createdBooks;
-}
+import { seedBooks } from "./helpers.mjs";
 
 // Configure a new inmemory database for each test
 
@@ -33,19 +20,23 @@ describe("Books", () => {
 
     it("should create a book", async () => {
 
-        const newBook = books[7];
-
         const response = await request(app)
             .post("/books")
-            .send(newBook);
+            .send({
+                title: books[7].title,
+                author: books[7].author,
+                genre: books[7].genre,
+                publishedYear: books[7].publishedYear,
+                pages: books[7].pages
+            });
 
         expect(response.status).toBe(201);
         expect(response.body.id).toBeDefined();
-        expect(response.body.title).toBe(newBook.title);
-        expect(response.body.author).toBe(newBook.author);
-        expect(response.body.genre).toBe(newBook.genre);
-        expect(response.body.publishedYear).toBe(newBook.publishedYear);
-        expect(response.body.pages).toBe(newBook.pages);
+        expect(response.body.title).toBe(books[7].title);
+        expect(response.body.author).toBe(books[7].author);
+        expect(response.body.genre).toBe(books[7].genre);
+        expect(response.body.publishedYear).toBe(books[7].publishedYear);
+        expect(response.body.pages).toBe(books[7].pages);
     });
 
     // GET /books
@@ -99,11 +90,16 @@ describe("Books", () => {
     it("should return 409 if the book already exists", async () => {
 
         await seedBooks();
-        const book = books[0];
 
         const response = await request(app)
             .post("/books")
-            .send(book);
+            .send({
+                title: books[0].title,
+                author: books[0].author,
+                genre: books[0].genre,
+                publishedYear: books[0].publishedYear,
+                pages: books[0].pages
+            });
 
         expect(response.status).toBe(409);
     });
@@ -123,49 +119,44 @@ describe("Books", () => {
 
     // PATCH /books/:id
 
-    it("should get update a book by id", async () => {
+    it("should update a book by id", async () => {
 
         const createdBooks = await seedBooks();
 
-        const originalBook = createdBooks[4];
-
         const updatedBook = {
-            "title": originalBook.title,
-            "author": originalBook.author,
-            "genre": originalBook.genre,
-            "publishedYear": originalBook.publishedYear,
-            "pages": originalBook.pages + 10
+            title: createdBooks[4].title,
+            author: createdBooks[4].author,
+            genre: createdBooks[4].genre,
+            publishedYear: createdBooks[4].publishedYear,
+            pages: createdBooks[4].pages + 10
         };
 
         const response = await request(app)
-            .patch(`/books/${originalBook.id}`)
+            .patch(`/books/${createdBooks[4].id}`)
             .send(updatedBook);
 
         expect(response.status).toBe(200);
-        expect(response.body.id).toBe(originalBook.id);
-        expect(response.body.title).toBe(originalBook.title);
-        expect(response.body.author).toBe(originalBook.author);
-        expect(response.body.genre).toBe(originalBook.genre);
-        expect(response.body.publishedYear).toBe(originalBook.publishedYear);
-        expect(response.body.pages).toBe(originalBook.pages + 10);
+        expect(response.body.id).toBe(createdBooks[4].id);
+        expect(response.body.title).toBe(createdBooks[4].title);
+        expect(response.body.author).toBe(createdBooks[4].author);
+        expect(response.body.genre).toBe(createdBooks[4].genre);
+        expect(response.body.publishedYear).toBe(createdBooks[4].publishedYear);
+        expect(response.body.pages).toBe(createdBooks[4].pages + 10);
     });
 
-    it("should get return 404 if id not found", async () => {
+    it("should return 404 if id not found", async () => {
 
         await seedBooks();
 
-        const testBook = {
-            id: "123",
-            title: books[2].title,
-            author: books[2].author,
-            genre: books[2].genre,
-            publishedYear: books[2].publishedYear,
-            pages: books[2].pages + 10
-        };
-
         const response = await request(app)
-            .patch(`/books/${testBook.id}`)
-            .send(testBook);
+            .patch("/books/123")
+            .send({
+                title: "The art of farting",
+                author: "Greg the flatulent",
+                genre: "Comedy",
+                publishedYear: 1976,
+                pages: 1337
+            });
 
         expect(response.status).toBe(404);
     });
@@ -176,15 +167,13 @@ describe("Books", () => {
 
         const createdBooks = await seedBooks();
 
-        const id = createdBooks[4].id;
-
         const response = await request(app)
-            .delete(`/books/${id}`);
+            .delete(`/books/${createdBooks[4].id}`);
 
         expect(response.status).toBe(204);
 
         const getResponse = await request(app)
-            .get(`/books/${id}`);
+            .get(`/books/${createdBooks[4].id}`);
 
         expect(getResponse.status).toBe(404);
     });
@@ -193,10 +182,8 @@ describe("Books", () => {
 
         await seedBooks();
 
-        const id = "123";
-
         const response = await request(app)
-            .delete(`/books/${id}`);
+            .delete("/books/123");
 
         expect(response.status).toBe(404);
     });

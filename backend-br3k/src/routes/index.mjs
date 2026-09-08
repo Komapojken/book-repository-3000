@@ -3,7 +3,7 @@ import bookRoutes from "./bookRoutes.mjs";
 
 const router = express.Router();
 
-// Tickets
+// Books
 router.use("/books", bookRoutes);
 
 export default router;
