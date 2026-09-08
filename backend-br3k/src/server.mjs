@@ -4,8 +4,13 @@ import { createDatabase } from "./database/databaseConfig.mjs";
 import { initializeDatabase } from "./services/bookService.mjs";
 
 // Setting up database
-const db = createDatabase("./database/books.db");
-initializeDatabase(db);
+try {
+    const db = createDatabase("./database/books.db");
+    initializeDatabase(db);
+} catch (error) {
+    console.error("Failed to open database", error);
+    process.exit(1);
+}
 
 // Setting port for server
 const PORT = process.env.PORT;

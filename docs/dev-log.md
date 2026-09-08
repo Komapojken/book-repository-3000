@@ -7,6 +7,15 @@ Documentation of development.
 ---
 
 Date: 2026-09-08
+Time: 16:51
+
+Task: Implemented error handling server/database error. Test passed.
+
+Next: Enhance input sanitization (remove script).
+
+---
+
+Date: 2026-09-08
 Time: 16:22
 
 Task: Added test for error handling server/database error. Test failed.

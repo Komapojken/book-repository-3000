@@ -5,20 +5,6 @@ import { createDatabase } from "../src/database/databaseConfig.mjs";
 import { initializeDatabase } from "../src/services/bookService.mjs";
 import books from "../src/seed/books.mjs";
 
-async function seedBooks() {
-    const createdBooks = [];
-
-    for (const book of books) {
-        const response = await request(app)
-            .post("/books")
-            .send(book);
-
-        createdBooks.push(response.body);
-    }
-
-    return createdBooks;
-}
-
 // Configure a new inmemory database for each test
 
 beforeEach(() => {
@@ -47,9 +33,7 @@ describe("Error handling", () => {
 
     // GET /books
 
-    it("should return 500 when getting books books by genre and the database is unavailable", async () => {
-
-        await seedBooks();
+    it("should return 500 when getting books by genre and the database is unavailable", async () => {
 
         const response = await request(app)
             .get("/books?page=1");
