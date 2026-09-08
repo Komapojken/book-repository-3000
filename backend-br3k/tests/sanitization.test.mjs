@@ -12,7 +12,7 @@ beforeEach(() => {
 
 // Tests
 
-describe("Books", () => {
+describe("Sanitization", () => {
 
     // POST /books
 

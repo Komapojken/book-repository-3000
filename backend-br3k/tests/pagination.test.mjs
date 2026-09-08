@@ -27,7 +27,7 @@ beforeEach(() => {
 
 // Tests
 
-describe("Books", () => {
+describe("Pagination", () => {
 
     it("should return the first page of books", async () => {
         await seedBooks();

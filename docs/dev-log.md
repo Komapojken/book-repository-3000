@@ -7,6 +7,17 @@ Documentation of development.
 ---
 
 Date: 2026-09-08
+Time: 16:22
+
+Task: Added test for error handling server/database error. Test failed.
+
+Notes: Adding error handling because I forgot to do it earlier.
+
+Next: Implement error handling for server/database error.
+
+---
+
+Date: 2026-09-08
 Time: 15:21
 
 Task: 'npm run init-db' now creates database-folder if missing on a fresh install. Added fix for better-sqlite3 v13 bug on windows Updated README.md.

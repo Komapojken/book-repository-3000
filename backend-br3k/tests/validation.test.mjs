@@ -27,7 +27,7 @@ beforeEach(() => {
 
 // Tests
 
-describe("Books", () => {
+describe("Validation", () => {
 
     // POST /books
 
