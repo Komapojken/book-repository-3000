@@ -73,7 +73,7 @@ http://localhost:3001/api-docs
 To run tests.
 
 ```bash
-cd backend-br3k
+cd book-repository-3000/backend-br3k
 npm test -- --run
 ```
 

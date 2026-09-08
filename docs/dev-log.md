@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-08
+Time: 15:21
+
+Task: 'npm run init-db' now creates database-folder if missing on a fresh install. Added fix for better-sqlite3 v13 bug on windows Updated README.md.
+
+---
+
+Date: 2026-09-08
 Time: 14:55
 
 Task: Updated README.md.

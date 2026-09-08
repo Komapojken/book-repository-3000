@@ -1,8 +1,11 @@
 import Database from "better-sqlite3";
 import crypto from "node:crypto";
 import books from "../../src/seed/books.mjs";
+import fs from "node:fs";
 
 function importDataToDb() {
+
+    fs.mkdirSync("./database", { recursive: true });
 
     const db = new Database("./database/books.db");
     
