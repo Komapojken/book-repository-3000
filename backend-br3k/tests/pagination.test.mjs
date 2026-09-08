@@ -33,7 +33,7 @@ describe("Books", () => {
         await seedBooks();
 
         const response = await request(app)
-            .get("/books?page=1&pageSize=5");
+            .get("/books?page=1");
 
         expect(response.status).toBe(200);
         expect(response.body.items).toHaveLength(5);
@@ -45,7 +45,7 @@ describe("Books", () => {
         const createdBooks = await seedBooks();
 
         const response = await request(app)
-            .get("/books?page=2&pageSize=5");
+            .get("/books?page=2");
 
         expect(response.status).toBe(200);
         expect(response.body.items).toHaveLength(5);
@@ -57,7 +57,7 @@ describe("Books", () => {
         await seedBooks();
 
         const response = await request(app)
-            .get("/books?page=5&pageSize=5");
+            .get("/books?page=5");
 
         expect(response.status).toBe(200);
         expect(response.body.items).toHaveLength(3);
@@ -67,7 +67,7 @@ describe("Books", () => {
         await seedBooks();
 
         const response = await request(app)
-            .get("/books?page=99&pageSize=5");
+            .get("/books?page=99");
 
         expect(response.status).toBe(200);
         expect(response.body.items).toEqual([]);

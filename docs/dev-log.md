@@ -7,6 +7,17 @@ Documentation of development.
 ---
 
 Date: 2026-09-08
+Time: 14:32
+
+Task: Bug-hunt successful. GET /books is now always paginated. Removed one obsolete test from 'books.test.mjs'.
+
+Notes: Simplified the GET /books logic. Pagination is now handled consistently for all requests, fixing edge cases introduced during the initial implementation.
+
+Next: Update README.md.
+
+---
+
+Date: 2026-09-08
 Time: 11:39
 
 Task: Implemented swagger documentation of endpoints.

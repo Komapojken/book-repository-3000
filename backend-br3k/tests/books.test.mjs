@@ -50,23 +50,6 @@ describe("Books", () => {
 
     // GET /books
 
-    it("should get all the books", async () => {
-
-        await seedBooks();
-
-        const response = await request(app)
-            .get("/books");
-
-        expect(response.status).toBe(200);
-        expect(response.body.items).toHaveLength(books.length);
-        expect(response.body.items[0]).toEqual(
-            expect.objectContaining({
-                title: books[0].title,
-                author: books[0].author
-            })
-        );
-    });
-
     it("should filter books by genre", async () => {
 
         await seedBooks();

@@ -14,8 +14,7 @@ export function getAllBooks(req, res) {
     const query = {
         genre: req.query.genre,
         author: req.query.author,
-        page: Number(req.query.page),
-        pageSize: Number(req.query.pageSize)
+        page: Number(req.query.page)
     };
 
     const books = bookService.getAllBooks(query);

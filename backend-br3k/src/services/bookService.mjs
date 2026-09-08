@@ -39,8 +39,8 @@ export function createBook(data) {
 
 export function getAllBooks(query) {
     const page = query.page || 1;
-    const pageSize = query.pageSize || 1000;
-    const offset = (page - 1) * pageSize;
+    const PAGE_SIZE = 5;
+    const offset = (page - 1) * PAGE_SIZE;
 
     if (query.genre && query.author) {
         const books = db.prepare(`
@@ -50,9 +50,9 @@ export function getAllBooks(query) {
             AND author LIKE ?
             LIMIT ?
             OFFSET ?
-        `).all(`%${query.genre}%`, `%${query.author}%`, pageSize, offset);
+        `).all(`%${query.genre}%`, `%${query.author}%`, PAGE_SIZE, offset);
 
-        return { items: books.map(mapBook), page: query.page, pageSize: query.pageSize };
+        return { items: books.map(mapBook), page: page, pageSize: PAGE_SIZE };
     }
 
     if (query.genre) {
@@ -62,9 +62,9 @@ export function getAllBooks(query) {
             WHERE genre LIKE ?
             LIMIT ?
             OFFSET ?
-        `).all(`%${query.genre}%`, pageSize, offset);
+        `).all(`%${query.genre}%`, PAGE_SIZE, offset);
 
-        return { items: books.map(mapBook), page: query.page, pageSize: query.pageSize };
+        return { items: books.map(mapBook), page: page, pageSize: PAGE_SIZE };
     }
 
     if (query.author) {
@@ -74,27 +74,19 @@ export function getAllBooks(query) {
             WHERE author LIKE ?
             LIMIT ?
             OFFSET ?
-        `).all(`%${query.author}%`, pageSize, offset);
+        `).all(`%${query.author}%`, PAGE_SIZE, offset);
 
-        return { items: books.map(mapBook), page: query.page, pageSize: query.pageSize };
-    }
-
-    if (query.pageSize && query.page) {
-        const books = db.prepare(`
-            SELECT *
-            FROM books
-            LIMIT ?
-            OFFSET ?
-        `).all(pageSize, offset);
-
-        return { items: books.map(mapBook), page: query.page, pageSize: query.pageSize };
+        return { items: books.map(mapBook), page: page, pageSize: PAGE_SIZE };
     }
 
     const books = db.prepare(`
-        SELECT * FROM books
-    `).all();
+        SELECT *
+        FROM books
+        LIMIT ?
+        OFFSET ?
+    `).all(PAGE_SIZE, offset);
 
-    return { items: books.map(mapBook), page: query.page, pageSize: query.pageSize };
+    return { items: books.map(mapBook), page: page, pageSize: PAGE_SIZE };
 }
 
 export function getBookById(id) {
