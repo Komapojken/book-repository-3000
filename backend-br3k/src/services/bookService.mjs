@@ -153,5 +153,5 @@ export function deleteBookById(id) {
         WHERE id = ?
     `).run(id);
 
-    return { success: true, message: "Book deleted" };
+    return { success: true };
 }

@@ -7,6 +7,15 @@ Documentation of development.
 ---
 
 Date: 2026-09-08
+Time: 11:39
+
+Task: Implemented swagger documentation of endpoints.
+
+Next: Bug-hunt in pagination.
+
+---
+
+Date: 2026-09-08
 Time: 10:22
 
 Task: Implemented input sanitization. Test passed.
