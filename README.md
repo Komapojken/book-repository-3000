@@ -2,7 +2,7 @@
 
 ## About
 
-Book Repository 3000 is a REST API backend developed as a school examination project. It is built with Node.js, Express.js, and SQLite using a layered architecture.
+Book Repository 3000 is a RESTful API for managing books, developed as a school examination project. It is built with Node.js, Express.js, and SQLite using a layered architecture.
 
 ## Tech Stack
 
@@ -15,11 +15,13 @@ Book Repository 3000 is a REST API backend developed as a school examination pro
 ## Features
 
 - CRUD operations for books
+- Input sanitization
+- Request validation
 - Filtering by genre
 - Filtering by author
 - Pagination (5 books per page)
-- Input validation
 - Unit and integration tests
+- Interactive Swagger documentation
 
 ## Requirements
 
@@ -37,6 +39,24 @@ npm run dev
 ```
 
 ## Usage
+
+Start the development server.
+
+```bash
+npm run dev
+```
+
+The API is available at:
+
+```
+http://localhost:3001
+```
+
+Interactive API documentation is available at:
+
+```
+http://localhost:3001/api-docs
+```
 
 ## API Endpoints
 
@@ -58,6 +78,16 @@ npm test -- --run
 ```
 
 ## Documentation
+
+The API is documented using Swagger (OpenAPI).
+
+After starting the server, visit:
+
+```
+http://localhost:3001/api-docs
+```
+
+to explore all endpoints, request bodies, query parameters, and response formats.
 
 ## Project Structure
 
@@ -81,6 +111,8 @@ book-repository-3000/
 │   │   │   └── books.mjs
 │   │   ├── services/
 │   │   │   └── bookService.mjs
+│   │   ├── swagger/
+│   │   │   └── swaggerConfig.mjs
 │   │   ├── app.mjs
 │   │   └── server.mjs
 │   │
@@ -88,6 +120,7 @@ book-repository-3000/
 │   │   ├── books.test.mjs
 │   │   ├── pagination.test.mjs
 │   │   ├── validation.test.mjs
+│   │   ├── sanitization.test.mjs
 │   │   └── setup.mjs
 │   │
 │   ├── database/
@@ -114,4 +147,4 @@ book-repository-3000/
 
 > "Knowledge is the path the ignorant seldom treads."
 >
-> —CorseBot
+> —CourseBot

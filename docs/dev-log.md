@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-08
+Time: 14:55
+
+Task: Updated README.md.
+
+---
+
+Date: 2026-09-08
 Time: 14:32
 
 Task: Bug-hunt successful. GET /books is now always paginated. Removed one obsolete test from 'books.test.mjs'.
