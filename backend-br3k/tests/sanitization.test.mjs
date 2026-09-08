@@ -84,4 +84,46 @@ describe("Sanitization", () => {
 
         expect(response.status).toBe(409);
     });
+
+    it("should strip HTML tags from title", async () => {
+        const response = await request(app)
+            .post("/books")
+            .send({
+                title: "<script>The Hobbit</script>",
+                author: "J.R.R. Tolkien",
+                genre: "Fantasy",
+                publishedYear: 1937,
+                pages: 310
+            });
+        expect(response.status).toBe(201);
+        expect(response.body.title).toBe("The Hobbit");
+    });
+
+    it("should strip HTML tags from author", async () => {
+        const response = await request(app)
+            .post("/books")
+            .send({
+                title: "The Hobbit",
+                author: "<b>J.R.R. Tolkien</b>",
+                genre: "Fantasy",
+                publishedYear: 1937,
+                pages: 310
+            });
+        expect(response.status).toBe(201);
+        expect(response.body.author).toBe("J.R.R. Tolkien");
+    });
+
+    it("should strip HTML tags from genre", async () => {
+        const response = await request(app)
+            .post("/books")
+            .send({
+                title: "The Hobbit",
+                author: "J.R.R. Tolkien",
+                genre: "<div>Fantasy</div>",
+                publishedYear: 1937,
+                pages: 310
+            });
+        expect(response.status).toBe(201);
+        expect(response.body.genre).toBe("Fantasy");
+    });
 });

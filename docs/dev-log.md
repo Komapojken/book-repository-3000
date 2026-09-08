@@ -7,6 +7,15 @@ Documentation of development.
 ---
 
 Date: 2026-09-08
+Time: 17:53
+
+Task: Added test for script input sanitization. Test failed.
+
+Next: Implement script input sanitization.
+
+---
+
+Date: 2026-09-08
 Time: 16:51
 
 Task: Implemented error handling server/database error. Test passed.
