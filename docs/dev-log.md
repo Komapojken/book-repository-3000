@@ -7,6 +7,15 @@ Documentation of development.
 ---
 
 Date: 2026-09-08
+Time: 18:40
+
+Task: Implemented script input sanitization. Test passed.
+
+Next: Update Swagger with 500 responses.
+
+---
+
+Date: 2026-09-08
 Time: 17:53
 
 Task: Added test for script input sanitization. Test failed.

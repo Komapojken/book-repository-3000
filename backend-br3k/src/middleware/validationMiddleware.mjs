@@ -2,6 +2,7 @@ import { body, validationResult } from "express-validator";
 
 export const validateCreateBook = [
     body("title")
+        .customSanitizer((value) => String(value).replace(/<[^>]*>/g, ""))
         .trim()
         .exists()
         .withMessage("Title is required")
@@ -9,6 +10,7 @@ export const validateCreateBook = [
         .withMessage("Title cannot be empty"),
 
     body("author")
+        .customSanitizer((value) => String(value).replace(/<[^>]*>/g, ""))
         .trim()
         .exists()
         .withMessage("Author is required")
@@ -16,6 +18,7 @@ export const validateCreateBook = [
         .withMessage("Author name cannot be empty"),
 
     body("genre")
+        .customSanitizer((value) => String(value).replace(/<[^>]*>/g, ""))
         .trim()
         .exists()
         .withMessage("Genre is required")
