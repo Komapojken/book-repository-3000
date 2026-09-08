@@ -6,6 +6,15 @@ Documentation of development.
 
 ---
 
+Date: 2026-09-08
+Time: 10:09
+
+Task: Added test for input sanitization. Test failed.
+
+Next: Implement input sanitization.
+
+---
+
 Date: 2026-09-07
 Time: 16:00
 
