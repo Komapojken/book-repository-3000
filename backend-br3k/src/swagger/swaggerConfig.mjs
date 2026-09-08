@@ -74,6 +74,16 @@ const options = {
                             example: 5
                         }
                     }
+                },
+
+                Error: {
+                    type: "object",
+                    properties: {
+                        message: {
+                            type: "string",
+                            example: "Internal server error"
+                        }
+                    }
                 }
             }
         },

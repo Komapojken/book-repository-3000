@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-08
+Time: 18:53
+
+Task: Updated Swagger with 500 responses on all endpoints. Updated README.md.
+
+---
+
+Date: 2026-09-08
 Time: 18:40
 
 Task: Implemented script input sanitization. Test passed.

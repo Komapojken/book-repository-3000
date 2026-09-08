@@ -103,6 +103,7 @@ book-repository-3000/
 │   │   ├── mappers/
 │   │   │   └── bookMapper.mjs
 │   │   ├── middleware/
+│   │   │   ├── errorMiddleware.mjs
 │   │   │   └── validationMiddleware.mjs
 │   │   ├── routes/
 │   │   │   ├── bookRoutes.mjs
@@ -118,6 +119,7 @@ book-repository-3000/
 │   │
 │   ├── tests/
 │   │   ├── books.test.mjs
+│   │   ├── errorHandling.test.mjs
 │   │   ├── pagination.test.mjs
 │   │   ├── validation.test.mjs
 │   │   ├── sanitization.test.mjs
@@ -128,6 +130,7 @@ book-repository-3000/
 │   │
 │   ├── .env
 │   ├── .env.example
+│   ├── .npmrc
 │   ├── package.json
 │   ├── package-lock.json
 │   └── vitest.config.mjs

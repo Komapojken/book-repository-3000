@@ -27,6 +27,12 @@ const router = express.Router();
  *         description: Validation failed
  *       409:
  *         description: Book already exists
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.post("/", validateCreateBook, bookController.createBook);
 
@@ -68,6 +74,12 @@ router.post("/", validateCreateBook, bookController.createBook);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/PaginatedBooks'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.get("/", bookController.getAllBooks);
 
@@ -93,6 +105,12 @@ router.get("/", bookController.getAllBooks);
  *               $ref: '#/components/schemas/Book'
  *       404:
  *         description: Book not found
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.get("/:id", bookController.getBookById);
 
@@ -126,6 +144,12 @@ router.get("/:id", bookController.getBookById);
  *         description: Validation failed
  *       404:
  *         description: Book not found
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.patch("/:id", validateCreateBook, bookController.updateBookById);
 
@@ -147,6 +171,12 @@ router.patch("/:id", validateCreateBook, bookController.updateBookById);
  *         description: Book deleted successfully
  *       404:
  *         description: Book not found
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.delete("/:id", bookController.deleteBookById);
 
