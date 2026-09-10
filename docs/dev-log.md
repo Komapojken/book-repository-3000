@@ -7,6 +7,22 @@ Documentation of development.
 ---
 
 Date: 2026-09-10
+Time: 15:07
+
+Task: Implemented update to errorMiddleware.mjs to return 400 when handling a broken json. Test passed.
+
+---
+
+Date: 2026-09-10
+Time: 15:01
+
+Task: Added test for broken json returning 400. Test failed.
+
+Next: Update errorMiddleware.mjs to return 400 when handling a broken json.
+
+---
+
+Date: 2026-09-10
 Time: 14:54
 
 Task: Implemented updated configuration of PORT. Test passed.

@@ -24,7 +24,7 @@ const router = express.Router();
  *             schema:
  *               $ref: '#/components/schemas/Book'
  *       400:
- *         description: Validation failed
+ *         description: Validation failed or invalid JSON
  *       409:
  *         description: Book already exists
  *       500:
