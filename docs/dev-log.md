@@ -7,6 +7,15 @@ Documentation of development.
 ---
 
 Date: 2026-09-10
+Time: 09:03
+
+Task: Added test for checking cors when starting server. Test failed.
+
+Next: Implement new cors logic.
+
+---
+
+Date: 2026-09-10
 Time: 08:43
 
 Task: Implemented duplication protection when updating a book. Test passed.

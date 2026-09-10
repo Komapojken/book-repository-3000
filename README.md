@@ -119,6 +119,7 @@ book-repository-3000/
 │   │
 │   ├── tests/
 │   │   ├── books.test.mjs
+│   │   ├── cors.test.mjs
 │   │   ├── errorHandling.test.mjs
 │   │   ├── helpers.mjs
 │   │   ├── pagination.test.mjs
