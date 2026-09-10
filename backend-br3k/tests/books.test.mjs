@@ -161,6 +161,23 @@ describe("Books", () => {
         expect(response.status).toBe(404);
     });
 
+    it("should return 409 if updated book would duplicate another book", async () => {
+        const createdBooks = await seedBooks();
+
+        const response = await request(app)
+            .patch(`/books/${createdBooks[4].id}`)
+            .send({
+                title: createdBooks[0].title,
+                author: createdBooks[0].author,
+                genre: createdBooks[4].genre,
+                publishedYear: createdBooks[4].publishedYear,
+                pages: createdBooks[4].pages
+            });
+
+        expect(response.status).toBe(409);
+        expect(response.body).toEqual({ message: "Book already exists in database" });
+    });
+
     // DELETE /books/:id
 
     it("should delete a book by id", async () => {

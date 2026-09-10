@@ -114,6 +114,18 @@ export function updateBookById(id, data) {
         return { success: false, reason: "notFound" };
     }
 
+    const duplicateBook = db.prepare(`
+        SELECT *
+        FROM books
+        WHERE title = ?
+        AND author = ?
+        AND id != ?
+    `).get(data.title, data.author, id);
+
+    if (duplicateBook) {
+        return { success: false, reason: "bookExists" };
+    }
+
     db.prepare(`
         UPDATE books
         SET title = ?, author = ?, genre = ?, published_year = ?, pages = ?
