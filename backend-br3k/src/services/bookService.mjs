@@ -28,11 +28,18 @@ export function createBook(data) {
         return { success: false, reason: "bookExists" };
     }
 
-    db.prepare(`
-        INSERT INTO books
-        (id, title, author, genre, published_year, pages)
-        VALUES (?, ?, ?, ?, ?, ?)    
-    `).run(book.id, book.title, book.author, book.genre, book.publishedYear, book.pages);
+    try {
+        db.prepare(`
+            INSERT INTO books
+            (id, title, author, genre, published_year, pages)
+            VALUES (?, ?, ?, ?, ?, ?)
+        `).run(book.id, book.title, book.author, book.genre, book.publishedYear, book.pages);
+    } catch (error) {
+        if (error.code === "SQLITE_CONSTRAINT_UNIQUE") {
+            return { success: false, reason: "bookExists" };
+        }
+        throw error;
+    }
 
     return book;
 }
@@ -126,11 +133,18 @@ export function updateBookById(id, data) {
         return { success: false, reason: "bookExists" };
     }
 
-    db.prepare(`
-        UPDATE books
-        SET title = ?, author = ?, genre = ?, published_year = ?, pages = ?
-        WHERE id = ?
-    `).run(data.title, data.author, data.genre, data.publishedYear, data.pages, id);
+    try {
+        db.prepare(`
+            UPDATE books
+            SET title = ?, author = ?, genre = ?, published_year = ?, pages = ?
+            WHERE id = ?
+        `).run(data.title, data.author, data.genre, data.publishedYear, data.pages, id);
+    } catch (error) {
+        if (error.code === "SQLITE_CONSTRAINT_UNIQUE") {
+            return { success: false, reason: "bookExists" };
+        }
+        throw error;
+    }
 
     const book = db.prepare(`
         SELECT *

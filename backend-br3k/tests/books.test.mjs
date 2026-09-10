@@ -39,6 +39,22 @@ describe("Books", () => {
         expect(response.body.pages).toBe(books[7].pages);
     });
 
+    it("should return 409 if the same title and author differ only by case", async () => {
+        await seedBooks();
+
+        const response = await request(app)
+            .post("/books")
+            .send({
+                title: books[0].title.toLowerCase(),
+                author: books[0].author.toLowerCase(),
+                genre: books[0].genre,
+                publishedYear: books[0].publishedYear,
+                pages: books[0].pages
+            });
+
+        expect(response.status).toBe(409);
+    });
+
     // GET /books
 
     it("should filter books by genre", async () => {
