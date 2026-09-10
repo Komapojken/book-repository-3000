@@ -5,17 +5,23 @@ import swaggerUi from "swagger-ui-express";
 import swaggerSpec from "./swagger/swaggerConfig.mjs";
 import { errorHandler } from "./middleware/errorMiddleware.mjs";
 
+// Origins from env-file
+export function getAllowedOrigins(origins) {
+    if (!origins) {
+        throw new Error(
+            "CORS_ALLOW_ORIGINS is missing. Copy .env.example to .env and set CORS_ALLOW_ORIGINS."
+        );
+    }
+    // Converting to array
+    return origins.split(",");
+}
+
 const app = express();
 
 app.use(express.json());
 
-// Origins from env-file
-const origins = process.env.CORS_ALLOW_ORIGINS;
-// Converting to array
-const allowedOrigins = origins.split(',');
-
 const corsOptions = {
-  origin: allowedOrigins,
+    origin: getAllowedOrigins(process.env.CORS_ALLOW_ORIGINS),
 };
 
 app.use(cors(corsOptions));
