@@ -1,6 +1,6 @@
 import express from "express";
 import * as bookController from "../controllers/bookController.mjs";
-import { validateCreateBook } from "../middleware/validationMiddleware.mjs";
+import { validateCreateBook, validateGetBooks } from "../middleware/validationMiddleware.mjs";
 
 const router = express.Router();
 
@@ -74,6 +74,8 @@ router.post("/", validateCreateBook, bookController.createBook);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/PaginatedBooks'
+ *       400:
+ *         description: Invalid page parameter
  *       500:
  *         description: Internal server error
  *         content:
@@ -81,7 +83,7 @@ router.post("/", validateCreateBook, bookController.createBook);
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.get("/", bookController.getAllBooks);
+router.get("/", validateGetBooks, bookController.getAllBooks);
 
 // Get book by id
 /**

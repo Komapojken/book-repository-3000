@@ -7,6 +7,22 @@ Documentation of development.
 ---
 
 Date: 2026-09-10
+Time: 13:51
+
+Task: Implemented validation for page at GET /books. Test passed:
+
+---
+
+Date: 2026-09-10
+Time: 13:38
+
+Task: Added test for validating page at GET /books. Test failed.
+
+Next: Implement validation for page at GET /books.
+
+---
+
+Date: 2026-09-10
 Time: 13:24
 
 Task: Removed duplicate of schema-table from initDatabase.mjs.
