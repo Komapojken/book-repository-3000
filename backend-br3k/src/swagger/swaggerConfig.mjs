@@ -31,10 +31,13 @@ const options = {
                             type: "string"
                         },
                         publishedYear: {
-                            type: "integer"
+                            type: "integer",
+                            minimum: 1,
+                            maximum: 9999
                         },
                         pages: {
-                            type: "integer"
+                            type: "integer",
+                            minimum: 1
                         }
                     }
                 },

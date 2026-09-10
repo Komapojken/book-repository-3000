@@ -93,6 +93,43 @@ describe("Validation", () => {
         expect(response.status).toBe(400);
     });
 
+    it("should return 400 if the published year is less than 1", async () => {
+        const response = await request(app)
+            .post("/books")
+            .send({
+                title: books[3].title,
+                author: books[3].author,
+                genre: books[3].genre,
+                publishedYear: -50,
+                pages: books[3].pages
+            });
+
+        expect(response.status).toBe(400);
+    });
+
+    it("should return 400 if number of pages is less than 1", async () => {
+        const response = await request(app)
+            .post("/books")
+            .send({
+                title: books[3].title,
+                author: books[3].author,
+                genre: books[3].genre,
+                publishedYear: books[3].publishedYear,
+                pages: 0
+            });
+
+        expect(response.status).toBe(400);
+    });
+
+    it("should accept a published year in the far future", async () => {
+        const response = await request(app)
+            .post("/books")
+            .send(books[2]);
+
+        expect(response.status).toBe(201);
+        expect(response.body.publishedYear).toBe(3402);
+    });
+
     // PATCH /books/:id
 
     it("should return 400 if the title is missing", async () => {

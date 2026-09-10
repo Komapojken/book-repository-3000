@@ -7,6 +7,22 @@ Documentation of development.
 ---
 
 Date: 2026-09-10
+Time: 09:39
+
+Task: Implemented validation for correct numbers. Test passed.
+
+---
+
+Date: 2026-09-10
+Time: 09:31
+
+Task: Added test for correct numbers in validation. Test failed.
+
+Next: Implement validation for correct numbers.
+
+---
+
+Date: 2026-09-10
 Time: 09:17
 
 Task: Implemented function for handling cors on startup. Test passed.
