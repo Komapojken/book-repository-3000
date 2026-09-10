@@ -11,7 +11,7 @@ export function getAllowedOrigins(origins) {
         throw new Error("CORS_ALLOW_ORIGINS is missing. Copy .env.example to .env and set CORS_ALLOW_ORIGINS.");
     }
     // Converting to array
-    return origins.split(",");
+    return origins.split(",").map((origin) => origin.trim());
 }
 
 export function getPort(port) {
