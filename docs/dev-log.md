@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-10
+Time: 15:36
+
+Task: Implemented unique constaints on title and author when POST /books to safeguard against duplicates. Test passed.
+
+---
+
+Date: 2026-09-10
 Time: 15:25
 
 Task: Added test for checking unique title and author on POST /books. Test failed.

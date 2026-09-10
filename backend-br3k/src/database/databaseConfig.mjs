@@ -7,11 +7,12 @@ export function createDatabase(filename) {
     CREATE TABLE IF NOT EXISTS books
     (
         id TEXT PRIMARY KEY,
-        title TEXT NOT NULL,
-        author TEXT NOT NULL,
+        title TEXT NOT NULL COLLATE NOCASE,
+        author TEXT NOT NULL COLLATE NOCASE,
         genre TEXT NOT NULL,
         published_year INTEGER,
-        pages INTEGER
+        pages INTEGER,
+        UNIQUE (title, author)
     )
     `).run();
 
