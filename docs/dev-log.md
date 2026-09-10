@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-10
+Time: 09:17
+
+Task: Implemented function for handling cors on startup. Test passed.
+
+---
+
+Date: 2026-09-10
 Time: 09:03
 
 Task: Added test for checking cors when starting server. Test failed.
