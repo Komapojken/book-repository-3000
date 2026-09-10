@@ -45,4 +45,16 @@ describe("Error handling", () => {
         expect(response.status).toBe(500);
         expect(response.body).toEqual({ message: "Internal server error" });
     });
+
+    // JSON
+
+    it("should return 400 if the request body is invalid JSON", async () => {
+        const response = await request(app)
+            .post("/books")
+            .set("Content-Type", "application/json")
+            .send("{ invalid json");
+
+        expect(response.status).toBe(400);
+        expect(response.body).toEqual({ message: "Invalid JSON" });
+    });
 });
