@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-10
+Time: 13:24
+
+Task: Removed duplicate of schema-table from initDatabase.mjs.
+
+---
+
+Date: 2026-09-10
 Time: 09:39
 
 Task: Implemented validation for correct numbers. Test passed.
