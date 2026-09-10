@@ -1,38 +1,20 @@
-import Database from "better-sqlite3";
-import crypto from "node:crypto";
 import books from "../seed/books.mjs";
 import fs from "node:fs";
+import { createDatabase } from "./databaseConfig.mjs";
+import { initializeDatabase, createBook } from "../services/bookService.mjs";
+
+const DB_PATH = "./database/books.db";
 
 function importDataToDb() {
 
     fs.mkdirSync("./database", { recursive: true });
+    fs.rmSync(DB_PATH, { force: true });
 
-    const db = new Database("./database/books.db");
-    
-    db.prepare(`
-        DROP TABLE IF EXISTS books
-    `).run();
-
-    db.prepare(`
-        CREATE TABLE IF NOT EXISTS books
-        (
-            id TEXT PRIMARY KEY,
-            title TEXT NOT NULL,
-            author TEXT NOT NULL,
-            genre TEXT NOT NULL,
-            published_year INTEGER,
-            pages INTEGER
-        )
-    `).run();
+    const db = createDatabase(DB_PATH);
+    initializeDatabase(db);
 
     for (const book of books) {
-        const id = crypto.randomUUID();
-
-        db.prepare(`
-            INSERT INTO books
-            (id, title, author, genre, published_year, pages)
-            VALUES (?, ?, ?, ?, ?, ?)    
-        `).run(id, book.title, book.author, book.genre, book.publishedYear, book.pages);
+        createBook(book);
     }
 
     db.close();
