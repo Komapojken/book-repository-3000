@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-10
+Time: 08:43
+
+Task: Implemented duplication protection when updating a book. Test passed.
+
+---
+
+Date: 2026-09-10
 Time: 08:24
 
 Task: Added test for duplication protection when updating a book. Test failed.

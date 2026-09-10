@@ -39,6 +39,10 @@ export function updateBookById(req, res) {
         return res.status(404).json({ message: "Book not found" });
     }
 
+    if (!book.success && book.reason === "bookExists") {
+        return res.status(409).json({ message: "Book already exists in database" });
+    }
+
     res.status(200).json(book);
 }
 

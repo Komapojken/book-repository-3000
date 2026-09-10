@@ -144,6 +144,8 @@ router.get("/:id", bookController.getBookById);
  *         description: Validation failed
  *       404:
  *         description: Book not found
+ *       409:
+ *         description: Book already exists
  *       500:
  *         description: Internal server error
  *         content:
