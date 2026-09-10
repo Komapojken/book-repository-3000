@@ -7,9 +7,18 @@ Documentation of development.
 ---
 
 Date: 2026-09-10
+Time: 14:44
+
+Task: Added test for configuration of PORT. Test failed.
+
+Next: Update configuration of PORT.
+
+---
+
+Date: 2026-09-10
 Time: 13:51
 
-Task: Implemented validation for page at GET /books. Test passed:
+Task: Implemented validation for page at GET /books. Test passed.
 
 ---
 
