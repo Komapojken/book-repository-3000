@@ -12,4 +12,9 @@ describe("CORS configuration", () => {
         expect(getAllowedOrigins("http://localhost:3000,http://localhost:3001"))
             .toEqual(["http://localhost:3000", "http://localhost:3001"]);
     });
+
+    it("should trim whitespace around origins", () => {
+        expect(getAllowedOrigins("http://localhost:3000, http://localhost:3001"))
+            .toEqual(["http://localhost:3000", "http://localhost:3001"]);
+    });
 });

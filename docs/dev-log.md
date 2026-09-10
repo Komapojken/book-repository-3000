@@ -7,6 +7,22 @@ Documentation of development.
 ---
 
 Date: 2026-09-10
+Time: 15:18
+
+Task: Implemented correct trim and string configuration for CORS. Test passed.
+
+---
+
+Date: 2026-09-10
+Time: 15:14
+
+Task: Added test for CORS string configuration. Test failed.
+
+Next: Implement correct trim and string configuration for CORS.
+
+---
+
+Date: 2026-09-10
 Time: 15:07
 
 Task: Implemented update to errorMiddleware.mjs to return 400 when handling a broken json. Test passed.
