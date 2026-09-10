@@ -29,15 +29,15 @@ export const validateCreateBook = [
         .exists()
         .withMessage("Published year is required")
         .toInt()
-        .isInt()
-        .withMessage("Published year must be an integer"),
+        .isInt({ min: 1, max: 9999 })
+        .withMessage("Published year must be an integer between 1 and 9999"),
 
     body("pages")
         .exists()
         .withMessage("Pages is required")
         .toInt()
-        .isInt()
-        .withMessage("Pages must be an integer"),
+        .isInt({ min: 1 })
+        .withMessage("Pages must be an integer of at least 1"),
 
     (req, res, next) => {
         const errors = validationResult(req);
