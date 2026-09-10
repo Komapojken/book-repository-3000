@@ -1,4 +1,16 @@
-import { body, validationResult } from "express-validator";
+import { body, query, validationResult } from "express-validator";
+
+function handleValidationErrors(req, res, next) {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(400).json({
+            errors: errors.array()
+        });
+    }
+
+    next();
+}
 
 export const validateCreateBook = [
     body("title")
@@ -39,15 +51,15 @@ export const validateCreateBook = [
         .isInt({ min: 1 })
         .withMessage("Pages must be an integer of at least 1"),
 
-    (req, res, next) => {
-        const errors = validationResult(req);
+    handleValidationErrors
+];
 
-        if (!errors.isEmpty()) {
-            return res.status(400).json({
-                errors: errors.array()
-            });
-        }
+export const validateGetBooks = [
+    query("page")
+        .optional()
+        .toInt()
+        .isInt({ min: 1 })
+        .withMessage("Page must be an integer of at least 1"),
 
-        next();
-    }
+    handleValidationErrors
 ];
