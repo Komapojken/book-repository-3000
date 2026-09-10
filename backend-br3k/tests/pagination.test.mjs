@@ -58,4 +58,33 @@ describe("Pagination", () => {
         expect(response.status).toBe(200);
         expect(response.body.items).toEqual([]);
     });
+
+    it("should return 400 if page is less than 1", async () => {
+        await seedBooks();
+
+        const response = await request(app)
+            .get("/books?page=-1");
+
+        expect(response.status).toBe(400);
+    });
+
+    it("should return 400 if page is not an integer", async () => {
+        await seedBooks();
+
+        const response = await request(app)
+            .get("/books?page=abc");
+
+        expect(response.status).toBe(400);
+    });
+
+    it("should default to page 1 if page is missing", async () => {
+        await seedBooks();
+
+        const response = await request(app)
+            .get("/books");
+
+        expect(response.status).toBe(200);
+        expect(response.body.page).toBe(1);
+        expect(response.body.items).toHaveLength(5);
+    });
 });
