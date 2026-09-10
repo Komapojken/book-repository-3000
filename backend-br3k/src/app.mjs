@@ -8,12 +8,18 @@ import { errorHandler } from "./middleware/errorMiddleware.mjs";
 // Origins from env-file
 export function getAllowedOrigins(origins) {
     if (!origins) {
-        throw new Error(
-            "CORS_ALLOW_ORIGINS is missing. Copy .env.example to .env and set CORS_ALLOW_ORIGINS."
-        );
+        throw new Error("CORS_ALLOW_ORIGINS is missing. Copy .env.example to .env and set CORS_ALLOW_ORIGINS.");
     }
     // Converting to array
     return origins.split(",");
+}
+
+export function getPort(port) {
+    if (!port) {
+        throw new Error("PORT is missing. Copy .env.example to .env and set PORT.");
+    }
+
+    return port;
 }
 
 const app = express();
