@@ -121,13 +121,23 @@ export function updateBookById(id, data) {
         return { success: false, reason: "notFound" };
     }
 
+    const current = mapBook(existingBook);
+
+    const updated = {
+        title: data.title ?? current.title,
+        author: data.author ?? current.author,
+        genre: data.genre ?? current.genre,
+        publishedYear: data.publishedYear ?? current.publishedYear,
+        pages: data.pages ?? current.pages
+    };
+
     const duplicateBook = db.prepare(`
         SELECT *
         FROM books
         WHERE title = ?
         AND author = ?
         AND id != ?
-    `).get(data.title, data.author, id);
+    `).get(updated.title, updated.author, id);
 
     if (duplicateBook) {
         return { success: false, reason: "bookExists" };
@@ -138,7 +148,7 @@ export function updateBookById(id, data) {
             UPDATE books
             SET title = ?, author = ?, genre = ?, published_year = ?, pages = ?
             WHERE id = ?
-        `).run(data.title, data.author, data.genre, data.publishedYear, data.pages, id);
+        `).run(updated.title, updated.author, updated.genre, updated.publishedYear, updated.pages, id);
     } catch (error) {
         if (error.code === "SQLITE_CONSTRAINT_UNIQUE") {
             return { success: false, reason: "bookExists" };

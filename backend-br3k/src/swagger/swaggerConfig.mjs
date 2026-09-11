@@ -42,6 +42,31 @@ const options = {
                     }
                 },
 
+                PatchBook: {
+                    type: "object",
+                    description: "One or more fields to update. Omitted fields keep their current values.",
+                    properties: {
+                        title: {
+                            type: "string"
+                        },
+                        author: {
+                            type: "string"
+                        },
+                        genre: {
+                            type: "string"
+                        },
+                        publishedYear: {
+                            type: "integer",
+                            minimum: 1,
+                            maximum: 9999
+                        },
+                        pages: {
+                            type: "integer",
+                            minimum: 1
+                        }
+                    }
+                },
+
                 Book: {
                     allOf: [
                         {

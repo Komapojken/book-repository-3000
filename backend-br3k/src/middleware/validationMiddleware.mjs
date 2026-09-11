@@ -71,3 +71,51 @@ export const validateGetBooks = [
 
     handleValidationErrors
 ];
+
+export const validateUpdateBook = [
+    body("title")
+        .optional()
+        .customSanitizer((value) => sanitizeHtml(value))
+        .trim()
+        .notEmpty()
+        .withMessage("Title cannot be empty"),
+
+    body("author")
+        .optional()
+        .customSanitizer((value) => sanitizeHtml(value))
+        .trim()
+        .notEmpty()
+        .withMessage("Author name cannot be empty"),
+
+    body("genre")
+        .optional()
+        .customSanitizer((value) => sanitizeHtml(value))
+        .trim()
+        .notEmpty()
+        .withMessage("Genre cannot be empty"),
+
+    body("publishedYear")
+        .optional()
+        .toInt()
+        .isInt({ min: 1, max: 9999 })
+        .withMessage("Published year must be an integer between 1 and 9999"),
+
+    body("pages")
+        .optional()
+        .toInt()
+        .isInt({ min: 1 })
+        .withMessage("Pages must be an integer of at least 1"),
+
+    body().custom((_, { req }) => {
+        const fields = ["title", "author", "genre", "publishedYear", "pages"];
+        const hasField = fields.some((field) => req.body[field] !== undefined);
+
+        if (!hasField) {
+            throw new Error("At least one field is required");
+        }
+
+        return true;
+    }),
+
+    handleValidationErrors
+];
