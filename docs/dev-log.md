@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-11
+Time: 10:23
+
+Task: Validate PORT before opening the database. Test passed.
+
+---
+
+Date: 2026-09-11
 Time: 10:17
 
 Task: Include message on validation 400 responses. Test passed.
