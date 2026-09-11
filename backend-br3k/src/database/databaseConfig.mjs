@@ -16,5 +16,19 @@ export function createDatabase(filename) {
     )
     `).run();
 
+    try {
+        db.prepare(`
+            CREATE UNIQUE INDEX IF NOT EXISTS idx_books_title_author
+            ON books (title COLLATE NOCASE, author COLLATE NOCASE)
+        `).run();
+    } catch (error) {
+        if (error.code === "SQLITE_CONSTRAINT_UNIQUE") {
+            throw new Error(
+                "Database has duplicate title and author rows. Run npm run init-db to reset."
+            );
+        }
+        throw error;
+    }
+
     return db;
 }
