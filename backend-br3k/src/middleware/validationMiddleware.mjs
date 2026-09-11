@@ -12,26 +12,29 @@ function handleValidationErrors(req, res, next) {
 
 export const validateCreateBook = [
     body("title")
-        .customSanitizer((value) => String(value).replace(/<[^>]*>/g, ""))
-        .trim()
         .exists()
         .withMessage("Title is required")
+        .bail()
+        .customSanitizer((value) => String(value).replace(/<[^>]*>/g, ""))
+        .trim()
         .notEmpty()
         .withMessage("Title cannot be empty"),
 
     body("author")
-        .customSanitizer((value) => String(value).replace(/<[^>]*>/g, ""))
-        .trim()
         .exists()
         .withMessage("Author is required")
+        .bail()
+        .customSanitizer((value) => String(value).replace(/<[^>]*>/g, ""))
+        .trim()
         .notEmpty()
         .withMessage("Author name cannot be empty"),
 
     body("genre")
-        .customSanitizer((value) => String(value).replace(/<[^>]*>/g, ""))
-        .trim()
         .exists()
         .withMessage("Genre is required")
+        .bail()
+        .customSanitizer((value) => String(value).replace(/<[^>]*>/g, ""))
+        .trim()
         .notEmpty()
         .withMessage("Genre cannot be empty"),
 

@@ -7,6 +7,22 @@ Documentation of development.
 ---
 
 Date: 2026-09-11
+Time: 17:14
+
+Task: Implemented validating omitted fields before sanitization. Test passed.
+
+---
+
+Date: 2026-09-11
+Time: 17:09
+
+Task: Added test for omitted title and author. Test failed.
+
+Next: Validate omitted fields before sanitization.
+
+---
+
+Date: 2026-09-11
 Time: 10:37
 
 Task: Ensure unique title and author index on database open. Test passed.
