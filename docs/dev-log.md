@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-11
+Time: 10:31
+
+Task: Filter empty CORS origins after split. Test passed.
+
+---
+
+Date: 2026-09-11
 Time: 10:28
 
 Task: Added test for empty CORS origins. Test failed.
