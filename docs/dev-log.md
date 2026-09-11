@@ -6,6 +6,13 @@ Documentation of development.
 
 ---
 
+Date: 2026-09-11
+Time: 09:59
+
+Task: Added test for GET /books/:id returning 404. Test Passed.
+
+---
+
 Date: 2026-09-10
 Time: 15:36
 
