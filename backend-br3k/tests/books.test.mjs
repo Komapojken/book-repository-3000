@@ -204,6 +204,30 @@ describe("Books", () => {
         expect(response.body).toEqual({ message: "Book already exists in database" });
     });
 
+    it("should update only the pages field", async () => {
+        const createdBooks = await seedBooks();
+        const original = createdBooks[4];
+
+        const response = await request(app)
+            .patch(`/books/${original.id}`)
+            .send({ pages: original.pages + 10 });
+
+        expect(response.status).toBe(200);
+        expect(response.body.pages).toBe(original.pages + 10);
+        expect(response.body.title).toBe(original.title);
+        expect(response.body.author).toBe(original.author);
+    });
+
+    it("should return 400 if the patch body is empty", async () => {
+        const createdBooks = await seedBooks();
+
+        const response = await request(app)
+            .patch(`/books/${createdBooks[4].id}`)
+            .send({});
+
+        expect(response.status).toBe(400);
+    });
+
     // DELETE /books/:id
 
     it("should delete a book by id", async () => {

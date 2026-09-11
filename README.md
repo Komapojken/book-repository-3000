@@ -65,7 +65,7 @@ http://localhost:3001/api-docs
 | POST | /books | Create a book |
 | GET | /books | Get all books |
 | GET | /books/:id | Get a book by ID |
-| PATCH | /books/:id | Update a book |
+| PATCH | /books/:id | Update one or more fields on a book |
 | DELETE | /books/:id | Delete a book |
 
 ## Running Tests

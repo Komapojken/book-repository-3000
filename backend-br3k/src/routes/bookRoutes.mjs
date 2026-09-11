@@ -1,6 +1,6 @@
 import express from "express";
 import * as bookController from "../controllers/bookController.mjs";
-import { validateCreateBook, validateGetBooks } from "../middleware/validationMiddleware.mjs";
+import { validateCreateBook, validateGetBooks, validateUpdateBook } from "../middleware/validationMiddleware.mjs";
 
 const router = express.Router();
 
@@ -121,7 +121,7 @@ router.get("/:id", bookController.getBookById);
  * @swagger
  * /books/{id}:
  *   patch:
- *     summary: Update a book
+ *     summary: Update one or more fields on a book
  *     parameters:
  *       - in: path
  *         name: id
@@ -134,7 +134,7 @@ router.get("/:id", bookController.getBookById);
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/CreateBook'
+ *             $ref: '#/components/schemas/PatchBook'
  *     responses:
  *       200:
  *         description: Book updated
@@ -155,7 +155,7 @@ router.get("/:id", bookController.getBookById);
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.patch("/:id", validateCreateBook, bookController.updateBookById);
+router.patch("/:id", validateUpdateBook, bookController.updateBookById);
 
 // Delete book
 /**
