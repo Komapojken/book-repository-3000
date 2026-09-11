@@ -1,5 +1,12 @@
 import { body, query, validationResult } from "express-validator";
 
+function sanitizeHtml(value) {
+    return String(value)
+        .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
+        .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, "")
+        .replace(/<[^>]*>/g, "");
+}
+
 function handleValidationErrors(req, res, next) {
     const errors = validationResult(req);
 
@@ -15,7 +22,7 @@ export const validateCreateBook = [
         .exists()
         .withMessage("Title is required")
         .bail()
-        .customSanitizer((value) => String(value).replace(/<[^>]*>/g, ""))
+        .customSanitizer((value) => sanitizeHtml(value))
         .trim()
         .notEmpty()
         .withMessage("Title cannot be empty"),
@@ -24,7 +31,7 @@ export const validateCreateBook = [
         .exists()
         .withMessage("Author is required")
         .bail()
-        .customSanitizer((value) => String(value).replace(/<[^>]*>/g, ""))
+        .customSanitizer((value) => sanitizeHtml(value))
         .trim()
         .notEmpty()
         .withMessage("Author name cannot be empty"),
@@ -33,7 +40,7 @@ export const validateCreateBook = [
         .exists()
         .withMessage("Genre is required")
         .bail()
-        .customSanitizer((value) => String(value).replace(/<[^>]*>/g, ""))
+        .customSanitizer((value) => sanitizeHtml(value))
         .trim()
         .notEmpty()
         .withMessage("Genre cannot be empty"),

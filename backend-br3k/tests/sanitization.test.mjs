@@ -89,7 +89,7 @@ describe("Sanitization", () => {
         const response = await request(app)
             .post("/books")
             .send({
-                title: "<script>The Hobbit</script>",
+                title: "<p>The Hobbit</p>",
                 author: "J.R.R. Tolkien",
                 genre: "Fantasy",
                 publishedYear: 1937,
