@@ -130,6 +130,32 @@ describe("Validation", () => {
         expect(response.body.publishedYear).toBe(3402);
     });
 
+    it("should return 400 if the title field is omitted", async () => {
+        const response = await request(app)
+            .post("/books")
+            .send({
+                author: books[3].author,
+                genre: books[3].genre,
+                publishedYear: books[3].publishedYear,
+                pages: books[3].pages
+            });
+
+        expect(response.status).toBe(400);
+    });
+
+    it("should return 400 if the author field is omitted", async () => {
+        const response = await request(app)
+            .post("/books")
+            .send({
+                title: books[3].title,
+                genre: books[3].genre,
+                publishedYear: books[3].publishedYear,
+                pages: books[3].pages
+            });
+
+        expect(response.status).toBe(400);
+    });
+
     // PATCH /books/:id
 
     it("should return 400 if the title is missing", async () => {
