@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-11
+Time: 20:38
+
+Task: Added test for partial update of book. Test failed.
+
+---
+
+Date: 2026-09-11
 Time: 20:23
 
 Task: Implemented striping script and style content during sanitization. Test passed.
