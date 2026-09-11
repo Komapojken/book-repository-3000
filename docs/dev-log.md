@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-11
+Time: 20:07
+
+Task: Added tests for additional script sanitization. Test failed.
+
+---
+
+Date: 2026-09-11
 Time: 17:14
 
 Task: Implemented validating omitted fields before sanitization. Test passed.

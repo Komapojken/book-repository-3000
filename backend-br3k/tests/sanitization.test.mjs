@@ -100,12 +100,42 @@ describe("Sanitization", () => {
         expect(response.body.title).toBe("The Hobbit");
     });
 
+    it("should remove script tags and their content from title", async () => {
+        const response = await request(app)
+            .post("/books")
+            .send({
+                title: "<script>alert('hej')</script>The Hobbit",
+                author: "J.R.R. Tolkien",
+                genre: "Fantasy",
+                publishedYear: 1937,
+                pages: 310
+            });
+
+        expect(response.status).toBe(201);
+        expect(response.body.title).toBe("The Hobbit");
+    });
+
     it("should strip HTML tags from author", async () => {
         const response = await request(app)
             .post("/books")
             .send({
                 title: "The Hobbit",
                 author: "<b>J.R.R. Tolkien</b>",
+                genre: "Fantasy",
+                publishedYear: 1937,
+                pages: 310
+            });
+
+        expect(response.status).toBe(201);
+        expect(response.body.author).toBe("J.R.R. Tolkien");
+    });
+
+    it("should remove script tags and their content from author", async () => {
+        const response = await request(app)
+            .post("/books")
+            .send({
+                title: "The Hobbit",
+                author: "J.R.R. Tolkien<script>alert('hej')</script>",
                 genre: "Fantasy",
                 publishedYear: 1937,
                 pages: 310
@@ -122,6 +152,21 @@ describe("Sanitization", () => {
                 title: "The Hobbit",
                 author: "J.R.R. Tolkien",
                 genre: "<div>Fantasy</div>",
+                publishedYear: 1937,
+                pages: 310
+            });
+
+        expect(response.status).toBe(201);
+        expect(response.body.genre).toBe("Fantasy");
+    });
+
+    it("should remove script tags and their content from genre", async () => {
+        const response = await request(app)
+            .post("/books")
+            .send({
+                title: "The Hobbit",
+                author: "J.R.R. Tolkien",
+                genre: "<script>alert('hej')</script>Fantasy",
                 publishedYear: 1937,
                 pages: 310
             });
