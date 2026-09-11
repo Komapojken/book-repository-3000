@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-11
+Time: 10:17
+
+Task: Include message on validation 400 responses. Test passed.
+
+---
+
+Date: 2026-09-11
 Time: 09:59
 
 Task: Added test for GET /books/:id returning 404. Test Passed.
