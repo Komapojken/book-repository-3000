@@ -7,6 +7,13 @@ Documentation of development.
 ---
 
 Date: 2026-09-11
+Time: 10:37
+
+Task: Ensure unique title and author index on database open. Test passed.
+
+---
+
+Date: 2026-09-11
 Time: 10:31
 
 Task: Filter empty CORS origins after split. Test passed.
