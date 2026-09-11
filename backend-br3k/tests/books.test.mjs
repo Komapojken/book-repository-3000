@@ -133,6 +133,16 @@ describe("Books", () => {
         expect(response.body.id).toBe(createdBooks[2].id);
     });
 
+    it("should return 404 if a book is not found by id", async () => {
+        await seedBooks();
+
+        const response = await request(app)
+            .get("/books/123");
+
+        expect(response.status).toBe(404);
+        expect(response.body).toEqual({ message: "Book not found" });
+    });
+
     // PATCH /books/:id
 
     it("should update a book by id", async () => {
